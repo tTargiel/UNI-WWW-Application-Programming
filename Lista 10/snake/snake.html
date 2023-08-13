@@ -1,0 +1,147 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Snake</title>
+    <style>
+        body {
+            background-image: url("snake-background.jpg");
+            background-position: "center";
+            background-repeat: no-repeat;
+            background-size: cover;
+        }
+
+        #ramka {
+            background: rgba(255, 255, 255, 0.5);
+            border: 1px solid grey;
+            height: 600px;
+            margin: auto;
+            overflow: hidden;
+            position: relative;
+            width: 600px;
+        }
+
+        p {
+            color: white;
+            font-size: 20px;
+            line-height: 1.6em;
+            margin: 10px;
+            margin: auto;
+            text-align: center;
+        }
+
+        h1 {
+            margin: 10px;
+            text-align: center;
+        }
+
+        div {
+            margin: 10px;
+            text-align: center;
+        }
+
+        b {
+            background: rgb(58, 233, 58);
+            border: 1px solid black;
+            display: block;
+            height: 20px;
+            position: absolute;
+            width: 20px;
+        }
+
+        .kropka {
+            background: rgb(235, 74, 74);
+            border: 1px solid black;
+            display: block;
+            height: 20px;
+            position: absolute;
+            width: 20px;
+        }
+
+        .button {
+            height: 50px;
+            margin: 10px;
+            position: absolute;
+            text-align: center;
+            top: 50%;
+            width: 150px;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-1.12.4.js"></script>
+</head>
+
+<body>
+    <div id="ramka"></div>
+    <p id="licznik">Punkty = 0</p>
+    <p id="rezultat"></p>
+    <div><button onClick="window.location.reload();"> Nowa gra </button></div>
+
+    <script>
+        var x = 200, y = 200, dx = 20, dy = 0, punkty = 0, kierunek = 2, time = 0;
+        $('#ramka').append("<b class='waz' id='glowa' style=left:" + x + "px;top:" + y + "px></b>");
+        nowakropka();
+
+        // Sterowanie
+        $(document).keydown(function (event) {
+            var a = event.keyCode;
+            if (a == 37 && kierunek != 2) { dx = -20; dy = 0; kierunek = 4; } // Strzałka w lewo
+            if (a == 38 && kierunek != 3) { dx = 0; dy = -20; kierunek = 1; } // Strzałka w górę
+            if (a == 39 && kierunek != 4) { dx = 20; dy = 0; kierunek = 2; }  // Strzałka w prawo
+            if (a == 40 && kierunek != 1) { dx = 0; dy = 20; kierunek = 3; }  // Strzałka w dół
+        });
+
+        function start() {
+            x += dx;
+            y += dy;
+
+            // Kolizja z jabłkiem
+            if ($(".waz:last").css("left") == $(".kropka").css("left") && $(".waz:last").css("top") == $(".kropka").css("top")) {
+                $(".kropka").remove();
+                nowakropka();
+                time = 4;
+                punkty++;
+            }
+
+            $('#ramka').append("<b class='waz' id='cialo' style=left:" + x + "px;top:" + y + "px></b>");
+
+            if (time >= 5) {
+                $('#ramka> .waz:first').remove();
+                time = 5;
+            }
+
+            time++;
+            snakeamount = document.querySelectorAll('.waz');
+            $("#licznik").html("Punkty = " + punkty + "");
+            czy_sciana();
+        }
+
+        function nowakropka() {
+            var placement = true;
+            xa = 20 * Math.floor(Math.random() * 20);
+            ya = 20 * Math.floor(Math.random() * 20);
+            $("#ramka").append("<b class='kropka' style=left:" + xa + "px;top:" + ya + "px></b>")
+        }
+
+        // Przegrana
+        function czy_sciana() {
+            if (x >= 600 || x < 0 || y >= 600 || y < 0) {
+                $("#rezultat").html("KONIEC GRY");
+                clearInterval(interval);
+            }
+
+            for (var i = 1; i < snakeamount.length; i++) {
+                if ($(".waz:last").css("left") == $("#ramka> .waz:nth-child(" + i + ")").css("left") && $(".waz:last").css("top") == $("#ramka> .waz:nth-child(" + i + ")").css("top")) {
+                    $("#rezultat").html("KONIEC GRY");
+                    clearInterval(interval);
+                }
+            }
+        }
+
+        var interval = setInterval(start, 200);
+    </script>
+</body>
+
+</html>

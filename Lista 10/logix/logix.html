@@ -1,0 +1,325 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Logix</title>
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Bungee+Outline&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com">
+    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300&display=swap" rel="stylesheet">
+    <style>
+        body {
+            color: white;
+            line-height: 1.6em;
+            font-size: 32px;
+            background-image: url("logix-background.jpg");
+            background-position: "center";
+        }
+
+        button {
+            font-family: 'Montserrat', sans-serif;
+            border: none;
+            color: black;
+            padding: 16px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            transition-duration: 0.4s;
+            cursor: pointer;
+        }
+
+        button:hover {
+            background-color: #f44336;
+        }
+
+        #operationBox div,
+        #startMessage,
+        #successMessage,
+        #endMessage {
+            font-family: 'Montserrat', sans-serif;
+        }
+
+        #content {
+            text-align: center;
+        }
+
+        #desk {
+            position: relative;
+            width: auto;
+            border-radius: 15px;
+            margin: 200px 0 0 0;
+        }
+
+        #answerBox {
+            margin: 50px auto 0 auto;
+        }
+
+        #operationBox {
+            margin: 0 auto;
+        }
+
+        #answerBox,
+        #operationBox {
+            width: 1350px;
+            height: 132px;
+            padding: 20px;
+            border: 3px solid white;
+            border-radius: 10px;
+            box-shadow: 0 0 0.3em rgba(0, 0, 0, 0.8);
+            background: rgb(40, 163, 116, 0.3);
+        }
+
+        #answerBox div,
+        #operationBox div {
+            float: left;
+            width: 120px;
+            height: 100px;
+            padding: 10px;
+            padding-top: 20px;
+            padding-bottom: 0;
+            border: 2px solid #333;
+            border-radius: 10px;
+            margin: 0 0 0 10px;
+            border-style: dashed;
+        }
+
+        #answerBox div:first-child,
+        #operationBox div:first-child {
+            margin-left: 60px;
+        }
+
+        #answerBox div.hovered {
+            box-shadow: 0 0 0.5em rgba(255, 255, 255, 0.8);
+            background: #28a374;
+        }
+
+        #answerBox div {
+            border-color: white;
+            font-size: 64px;
+            font-family: 'Bungee Outline', cursive;
+        }
+
+        #operationBox div {
+            background: #28a374;
+            color: black;
+            font-size: 21px;
+        }
+
+        #operationBox div.ui-draggable-dragging {
+
+            box-shadow: 0 0 0.5em rgba(0, 0, 0, 0.8);
+        }
+
+        #successMessage,
+        #endMessage {
+            width: 50%;
+            position: absolute;
+            left: 580px;
+            top: 250px;
+            width: 0;
+            height: 0;
+            z-index: 100;
+            margin: 0 auto;
+            background: #28a374;
+            border: 2px solid #333;
+            border-radius: 10px;
+            box-shadow: 0.3em 0.3em 0.5em rgba(0, 0, 0, 0.8);
+            padding: 20px;
+            color: white;
+        }
+
+        #startMessage {
+            background: #28a374;
+            border: 2px solid white;
+            ;
+            border-radius: 10px;
+            box-shadow: .3em .3em .5em rgba(0, 0, 0, .8);
+            padding: 20px;
+            color: white;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="content">
+        <div id="desk">
+            <div id="startMessage">
+                <h2 style="vertical-align: top;">Witaj w grze Logix!</h2>
+                <p style="vertical-align: middle;">Celem gry prawidłowe rozwiązanie wszystkich matematycznych równań
+                    <br> Dokonuj tego przez przeniesienie odpowiedniego kwadratu na wskazane pole <br> Poziom zadań
+                    zwiększa się wraz z poziomem
+                </p>
+                <button style="vertical-align: bottom" onclick="init(0); $('#startMessage').hide();">Rozpocznij
+                    grę!</button>
+            </div>
+            <br>
+            <br>
+            <div id="operationBox"></div>
+            <div id="answerBox"></div>
+            <div id="successMessage">
+                <h2>Świetnie,<br> udało Ci się ułożyć wszystkie!</h2>
+                <button onclick="init(level)">Następny poziom</button>
+            </div>
+            <div id="endMessage">
+                <h2>To koniec! <br> Udało Ci się przejść wszystkie poziomy <br> Możesz być z siebie dumny</h2>
+            </div>
+            <br>
+            <br>
+        </div>
+    </div>
+
+    <script src='https://code.jquery.com/jquery-2.2.4.min.js'></script>
+    <script src='https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.11.4/jquery-ui.min.js'></script>
+
+    <script>
+        var correctCards = 0;
+        var level = 0;
+
+        $('#endMessage').hide();
+        $('#successMessage').hide();
+        $('#startMessage').show();
+        $('#startMessage').animate({
+            left: '50%',
+            top: '50%',
+        });
+
+        $('#startMessage').css({
+            position: "absolute",
+            left: "50%",
+            top: '50%',
+            margin: '-220px 300px 0px -645px',
+        });
+
+        $('#successMessage').css({
+            position: "absolute",
+            left: "50%",
+            top: '50%',
+            margin: '-200px 0 0 -200px',
+            width: '400px',
+            height: '400px',
+        });
+
+        $('#endMessage').css({
+            position: "absolute",
+            left: "50%",
+            top: '50%',
+            margin: '-200px 0 0 -200px',
+            width: '400px',
+            height: '400px',
+        });
+
+        function init(level) {
+            console.log("Poziom", level);
+            var operations1 = [
+                { operation: "3*9-8", result: eval("3*9-8") },
+                { operation: "5*4+39", result: eval("5*4+39") },
+                { operation: "58-5*9", result: eval("58-5*9") },
+                { operation: "6/1-5", result: eval("6/1-5") },
+                { operation: "21+6/2", result: eval("21+6/2") },
+                { operation: "50/5-4", result: eval("50/5-4") },
+                { operation: "35+2*8", result: eval("35+2*8") },
+                { operation: "4+36/4", result: eval("4+36/4") }
+            ];
+            var operations2 = [
+                { operation: "31+2*9-26", result: eval("31+2*9-26") },
+                { operation: "6+9*8", result: eval("6+9*8") },
+                { operation: "67-7*7", result: eval("67-7*7") },
+                { operation: "55-8*4", result: eval("55-8*4") },
+                { operation: "29+12/2", result: eval("29+12/2") },
+                { operation: "27/3+35", result: eval("27/3+35") },
+                { operation: "14/2-2", result: eval("14/2-2") },
+                { operation: "80/8+22", result: eval("80/8+22") }
+            ];
+            var operations3 = [
+                { operation: "(-2+10)/4-3", result: eval("(-2+10)/4-3") },
+                { operation: "56+(45+4)/7", result: eval("56+(45+4)/7") },
+                { operation: "(60+10)/7-3", result: eval("(60+10)/7-3") },
+                { operation: "(19-5)*4+24", result: eval("(19-5)*4+24") },
+                { operation: "(3+1)*7-1", result: eval("(3+1)*7-1") },
+                { operation: "(1+5)*9-18", result: eval("(1+5)*9-18") },
+                { operation: "(79-9)/7+4", result: eval("(79-9)/7+4") },
+                { operation: "(14+10)/3-1", result: eval("(14+10)/3-1") }
+            ];
+            var operations;
+
+            (level == 0) ? operations = operations1 : 0;
+            (level == 1) ? operations = operations2 : 0;
+            (level == 2) ? operations = operations3 : 0;
+
+            $('#successMessage').hide();
+            correctCards = 0;
+            $('#operationBox').html('');
+            $('#answerBox').html('');
+
+            for (var i = 0; i < 8; i++) {
+                let x = operations[i].result;
+
+                $('<div>' + operations[i].operation + '</div>').data('number', String(x)).attr('id', 'card' + i).appendTo('#operationBox').draggable({
+                    containment: '#content',
+                    stack: '#operationBox div',
+                    cursor: 'move',
+                    revert: true
+                });
+            }
+
+            operations.sort(function () {
+                return Math.random() - .4
+            });
+
+            for (var i = 0; i < 8; i++) {
+                $('<div>' + operations[i].result + '</div>').data('number', operations[i].result).appendTo('#answerBox').droppable({
+                    accept: '#operationBox div',
+                    hoverClass: 'hovered',
+                    drop: handleCardDrop
+                });
+            }
+        }
+
+        function handleCardDrop(event, ui) {
+            var answerNumber = $(this).data('number');
+            var operationNumber = ui.draggable.data('number');
+
+            if (answerNumber == operationNumber) {
+                ui.draggable.addClass('correct');
+                $("div.correct").css("background-color", "#FFEC66");
+                ui.draggable.draggable('disable');
+                $(this).droppable('disable');
+                ui.draggable.position({
+                    of: $(this),
+                    my: 'left top',
+                    at: 'left top'
+                });
+                ui.draggable.draggable('option', 'revert', false);
+                correctCards++;
+            }
+
+            if (correctCards === 8) {
+                level++;
+
+                if (level == 3) {
+                    $('#endMessage').show();
+                    $('#endMessage').animate({
+                        left: '50%',
+                        top: '50%',
+                    });
+                }
+                else {
+                    correctCards = 0;
+                    $('#successMessage').show();
+                    $('#successMessage').animate({
+                        left: '50%',
+                        top: '40%',
+                        opacity: 1,
+                    });
+                }
+            }
+        }
+    </script>
+</body>
+
+</html>

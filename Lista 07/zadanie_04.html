@@ -1,0 +1,157 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zadanie 4</title>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <style>
+        td {
+            height: 50px;
+            width: 50px;
+            border: 1px solid grey;
+            text-align: center
+        }
+
+        td:hover {
+            background: #ddd
+        }
+
+        table {
+            margin: auto;
+            border-collapse: collapse;
+        }
+
+        h1 {
+            text-align: center
+        }
+
+        td {
+            font-size: 35px
+        }
+
+        img {
+            border-radius: 50%;
+            margin: 5px;
+            vertical-align: middle;
+            width: 40px
+        }
+    </style>
+</head>
+
+<body>
+    <table id="box">
+        <tr>
+            <td id=0> </td>
+            <td id=1> </td>
+            <td id="2"><img src="./media/wood.jpg"></td>
+            <td id=3><img src="./media/wood.jpg"></td>
+            <td id=4><img src="./media/wood.jpg"></td>
+            <td id=5> </td>
+            <td id=6> </td>
+        </tr>
+        <tr>
+            <td id=7> </td>
+            <td id=8> </td>
+            <td id=9><img src="./media/wood.jpg"></td>
+            <td id=10><img src="./media/wood.jpg"></td>
+            <td id=11><img src="./media/wood.jpg"></td>
+            <td id=12> </td>
+            <td id=13> </td>
+        </tr>
+        <tr>
+            <td id=14><img src="./media/wood.jpg"></td>
+            <td id=15><img src="./media/wood.jpg"></td>
+            <td id=16><img src="./media/wood.jpg"></td>
+            <td id=17><img src="./media/wood.jpg"></td>
+            <td id=18><img src="./media/wood.jpg"></td>
+            <td id=19><img src="./media/wood.jpg"></td>
+            <td id=20><img src="./media/wood.jpg"></td>
+        </tr>
+        <tr>
+            <td id=12><img src="./media/wood.jpg"></td>
+            <td id=22><img src="./media/wood.jpg"></td>
+            <td id=23><img src="./media/wood.jpg"></td>
+            <td id=24></td>
+            <td id=25><img src="./media/wood.jpg"></td>
+            <td id=26><img src="./media/wood.jpg"></td>
+            <td id=27><img src="./media/wood.jpg"></td>
+        </tr>
+        <tr>
+            <td id=28><img src="./media/wood.jpg"></td>
+            <td id=29><img src="./media/wood.jpg"></td>
+            <td id=30><img src="./media/wood.jpg"></td>
+            <td id=31><img src="./media/wood.jpg"></td>
+            <td id=32><img src="./media/wood.jpg"></td>
+            <td id=33><img src="./media/wood.jpg"></td>
+            <td id=34><img src="./media/wood.jpg"></td>
+        </tr>
+        <tr>
+            <td id=35> </td>
+            <td id=36> </td>
+            <td id=37><img src="./media/wood.jpg"></td>
+            <td id=38><img src="./media/wood.jpg"></td>
+            <td id=39><img src="./media/wood.jpg"></td>
+            <td id=40> </td>
+            <td id=41> </td>
+        </tr>
+        <tr>
+            <td id=42> </td>
+            <td id=43> </td>
+            <td id=44><img src="./media/wood.jpg"></td>
+            <td id=45><img src="./media/wood.jpg"></td>
+            <td id=46><img src="./media/wood.jpg"></td>
+            <td id=47> </td>
+            <td id=48> </td>
+        </tr>
+    </table>
+
+    <h1 onclick="location=location"></h1>
+    <script>
+
+        var i, id1, id2, middle, ile = 0;
+        var td = document.body.getElementsByTagName('TD');
+        var h1 = document.body.getElementsByTagName('H1');
+
+        for (i in td) {
+            if (td[i].innerHTML == '<img src="./media/wood.jpg">')
+                ile++;
+        }
+
+        $("img").draggable({
+            appendTo: "body",
+            helper: "clone",
+            start: function () { $(this).hide(); id1 = $(this).parent().attr("id"); },
+            stop: function () { $(this).show(); },
+        });
+
+        $("td").droppable({
+            activeClass: "active",
+            hoverClass: "hover",
+            accept: function () {
+                id2 = Number(this.id);
+                return $(this).html() == '' && (Math.abs(id2 - id1) == 2 || Math.abs(id2 - id1) == 14 || Math.abs(id2 - id1) == -14 || Math.abs(id2 - id1) == -2) // Sprawdzenie czy pole na którym chcemy położyć jest puste, i czy przeskakuje dozwoloną liczbę pól
+            },
+            drop: function (event, ui) {
+                ui.draggable.appendTo(this);
+                middle = ((Number(id2) + Number(id1)) / 2);
+                if (td[middle].innerHTML = '<img src="./media/wood.jpg">') {
+                    $("#" + (middle)).empty();
+                    ile--;
+                    if (ile > 1)
+                        h1[0].innerHTML = 'Zostało ' + ile;
+                    else {
+                        h1[0].innerHTML = 'Wygrałeś gratuluję';
+                        h1[0].style.color = 'red';
+                    }
+                }
+            }
+        });
+    </script>
+</body>
+
+</html>

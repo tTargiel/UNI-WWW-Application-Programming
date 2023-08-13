@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zadanie 3</title>
+    <style>
+        #a {
+            list-style-type: circle
+        }
+
+        ul {
+            list-style-type: lower-alpha;
+        }
+    </style>
+</head>
+
+<body>
+    <ul>
+        <li>Znaczniki <b>css, html, text, attr, val</b> w zależności od ilości wprowadzonych argumentów służą do
+            zwracania lub ustawiania wybranej własności</li></br>
+        <ul id="a">
+            <li><b>css</b> pozwala zmienić własności css w wybranym elemencie, podanie jednego argumentu
+                (np.$('#element').css({'background-color'})) pobiera wartość koloru tła dla elementu o id 'element'.
+                Przy użyciu dwóch argumentów (np. $('#element').css({'background-color',”blue”})) nastąpi ustawienie
+                koloru tła dla elementu o id 'element' na niebieski.</li>
+            <li><b>html</b> ustawia bądź zwraca zawartość danego elementu znajdującego się w ciele dokumentu HTML. Gdy
+                nie podamy żadnego argumentu zwróci nam wartość elementu o podanym id, jeśli wprowadzimy jakąś treść
+                jako argument funkcji zostanie ona umieszczona w wybranym elemencie.</li>
+            <li><b>text</b> bez argumentu zwraca tekst znajdujący się w wybranym przez nas miejscu, natomiast z -
+                ustawia treść dla tego elementu.</li>
+            <li><b>attr</b> umożliwia ustawienie bądź zwrócenie atrybutu i jego wartości; pierwszy argument oznacza
+                artybut z którego chcemy skorzystać, ewentualne umieszczenie drugiego argumentu ustawia mu konkretną
+                wartość.</li>
+            <li><b>val</b> zwraca lub ustawia wartość dla wybranego elementu. Metoda służy przede wszystkim do uzyskania
+                wartości elementów formularza, takich jak input, select i textarea. Po wywołaniu na pustym elemencie
+                zwraca undefined.</li></br>
+        </ul>
+        <li>Elementy <b>hide, remove, visibility, slideUp, fadeOut</b> powodują zniknięcie danego elementu z ekranu,
+            jednak każdy z nich robi to na inny sposób:
+            <ul id="a">
+                <li>hide - ukrywa element, działa podobnie do własności CSS display: none.</li>
+                <li>remove - całkowicie usuwa element ze strony.</li>
+                <li>visibility - ukrywa element na stronie, od hide różni się tym, że ukrywa zawartość elementu
+                    zostawiając dla niego miejsce na stronie.</li>
+                <li>slideUp - przesuwa dany element w górę, ukrywając go na stronie. Nie będzie on już wpływał na układ
+                    strony.</li>
+                <li>fadeOut - ukrywa dany element nadając mu efekt powolnego blaknięcia, aż stanie się niewidoczny. Nie
+                    ma on już wpływu na układ strony.</li>
+            </ul>
+        </li></br>
+        <li>Dodawanie obsługi zdarzeń przy pomocy elementów: <b>click, mouseover, mouseout, keydown</b> polega na
+            umieszczeniu w skrypcie linijki podobnej do: </br></br> $("p").mouseover(function(){ </br>
+            $("p").css("background-color", "yellow");}); </br></br> ustawia ona rodzaj akcji (click,mouseover itd.) która
+            wywołuje zdarzenie wypisane w nawiasie klamrowym, w tym przypadku dla danego paragrafu, nad którym znajduje
+            się mysz zmienia się kolor tła.
+        </li></br>
+        <li>Omów działanie metod:</li>
+        <ul id="a">
+            <li><b>before</b> - wstawia coś (np. tekst) przed wybranym przez nas elementem, lub elementami (w przypadku
+                wpisania $('p').before() dodatkowy element pojawi się przed każdym z paragrafów)</li></br>
+            <li><b>after</b> - wstawia coś (np. tekst) po wybranym przez nas elemencie, lub elementach (w przypadku
+                wpisania $('p').after() dodatkowy element pojawi się po każdym paragrafie)</li></br>
+            <li><b>prepend</b> - umieszcza wybrany przez nas obiekt na początku danego elementu (nie przed!),
+                przykładowo </br>$("ol").prepend("< li> Prepended item < / li>");</br> umieści na początku listy nowy
+                        element zawierający napis "prepended item".</li></br>
+            <li><b>append</b> - umieszcza wybrany przez nas obiekt na końcu danego elementu, przykładowo
+                </br>$("ol").append("< li> Prepended item < / li>");</br> umieści na końcu listy nowy element
+                        zawierający
+                        napis "prepended item".
+            </li></br>
+            <li><b>remove</b> - całkowicie usuwa dany element ze strony</li></br>
+            <li><b>empty</b> - opróżnia element z jego dzieci, przykładowo jeśli umieścimy w skrypcie zapis </br>
+                $("#div1").empty(); </br> to ze strony znikną wszystkie obiekty znajdujące się we wnętrzu elementu o id
+                "div1"</li></br>
+        </ul>
+        <li><b>animate</b> - zmienia styl CSS obiektu, a robiąc to stopniowo stwarza efekt animacji. Argumentem dla tej
+            własności mogą być jedynie wartości liczbowe(height,margin), animate nie jest w stanie tworzyć np. przejść
+            między kolorami.</li></br>
+    </ul>
+</body>
+
+</html>

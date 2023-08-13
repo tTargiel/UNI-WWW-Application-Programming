@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zadanie 7</title>
+</head>
+
+<body>
+    <input onchange="document.body.innerHTML += '<br>' + this.value + '=' + eval(this.value);">
+    <button onclick="location = location;">Wyczyść</button>
+    <p>
+        Powyższy 'kalkulator' oczekuje wpisania działania w polu input, po wykryciu opuszczenia
+        pola tekstowego (przycisk enter lub kliknięcie w inne miejsce na stronie)
+        wykonany zostaje skrypt w JavaScript.
+        <br>
+        <br>
+        Działanie skryptu jest proste - do części wewnętrznej HTML (na końcu body)
+        zostają dodane: najpierw nowa linia, później zawartość wpisana w input, znak
+        '=' a na końcu wynik działania wpisanego w polu tekstowym input.
+        <br>
+        <br>
+        Przycisk 'Wyczyść' powoduje ponowne załadowanie strony - co usuwa wpisane
+        dane oraz obliczone wyniki.
+    </p>
+</body>
+
+</html>

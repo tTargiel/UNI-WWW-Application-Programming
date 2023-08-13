@@ -1,0 +1,210 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zadanie 1a</title>
+    <style>
+        .menu1 a {
+            font-size: 20px;
+        }
+
+        .menu1 a {
+            text-decoration: none;
+        }
+
+        .menu1 a {
+            background: #eee;
+            display: block;
+            font-family: arial;
+            margin: 2px;
+            padding: 4px 20px;
+        }
+
+        .menu1 li li a {
+            color: black;
+        }
+
+        .menu1 li:hover>a {
+            background: #aaa;
+        }
+
+        .menu1>li {
+            border: 1px solid grey;
+            display: table-cell;
+            padding: 0;
+        }
+
+        .menu1>li>a {
+            background: #678;
+            color: white;
+            margin: 2px;
+        }
+
+        .menu1>li:hover>a {
+            background: #456;
+        }
+
+        .menu1 ul {
+            list-style-type: none;
+        }
+
+        .menu1 ul {
+            padding: 0;
+        }
+
+        .menu1 li ul {
+            background: #eee;
+            border: 1px solid grey;
+            position: absolute;
+        }
+
+        .menu1 li ul {
+            display: none;
+        }
+
+        .menu1 li:hover ul {
+            display: block;
+        }
+
+        .menu1>li {
+            border: none;
+            display: table-cell;
+            padding: 0;
+        }
+
+        dl {
+            margin-bottom: 50px;
+        }
+
+        dl dt {
+            background: #666;
+            color: #fff;
+            font-weight: bold;
+            margin-right: 10px;
+            padding: 5px;
+        }
+
+        dl dd {
+            margin: 0 0 16px 0;
+            padding: 5px 0;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <ul class="menu1">
+            <li><a href=#>Ludzie</a>
+                <ul>
+                    <li><a href=#>Einstein</a></li>
+                    <li><a href=#>Feynman</a></li>
+                    <li><a href=#>Chopin</a></li>
+                </ul>
+            </li>
+            <li><a href=#>Figury</a>
+                <ul>
+                    <li><a href=#>Kwadrat</a></li>
+                    <li><a href=#>Koło</a></li>
+                    <li><a href=#>Trójkąt</a></li>
+                </ul>
+            </li>
+            <li><a href=#>Miasta</a>
+                <ul>
+                    <li><a href=#>Wrocław</a></li>
+                    <li><a href=#>Kraków</a></li>
+                    <li><a href=#>Poznań</a></li>
+                </ul>
+            </li>
+            <li><a href=#>Ryby</a>
+                <ul>
+                    <li><a href=#>Dorsz</a></li>
+                    <li><a href=#>Śledź</a></li>
+                    <li><a href="https://www.google.com/search?q=sum">Sum</a></li>
+                </ul>
+            </li>
+        </ul>
+        <dl>
+            <dt>.menu1 a {
+                font-size: 20px;
+            }</dt>
+            <dd>W klasie menu1, w każdym znaczniku a - ustawia rozmiar czcionki na 20px</dd>
+
+            <dt>.menu1 a {
+                text-decoration: none;
+            }</dt>
+            <dd>W klasie menu1, w każdym znaczniku a - wyłącza dekoracje tekstu, takie jak podkreślenie, przekreślenie, kursywę itd.</dd>
+
+            <dt>.menu1 a {
+                font-family: arial;
+                display: block;
+                background: #eee;
+                padding: 4px 20px;
+                margin: 2px;
+            }</dt>
+            <dd>W klasie menu1, w każdym znaczniku a - ustawia czcionkę na arial, każdy tag a staje się elementem blokowym, kolor tła zmienia na jasny szary, wyściółka górna oraz dolna ma wielkość 4px, a wyściółka boczna 20px, dodatkowo margines ustawia na 2px</dd>
+
+            <dt>.menu1 li li a {
+                color: black;
+            }</dt>
+            <dd>W klasie menu1, w każdym znaczniku a poziomu drugiego listy - kolor tekstu zmienia na czarny</dd>
+            
+            <dt>.menu1 li:hover>a {
+                background: #aaa;
+            }</dt>
+            <dd>W klasie menu1, w każdym znaczniku a, który należy do najechanej przez kursor listy - zmienia kolor tła na szary</dd>
+
+            <dt>.menu1>li {
+                display: table-cell;
+                padding: 0;
+                border: 1px solid grey;
+            }</dt>
+            <dd>W klasie menu1, w liście będącej bezpośrednim potomkiem - wyświetlanie elementu jest zmieniane na komórkę tabeli, wyściółka jest redukowana do 0px oraz pojawia się obramowanie 1px w kolorze szarym</dd>
+
+            <dt>.menu1>li>a {
+                background: #678;
+                color: white;
+                margin: 2px;
+            }</dt>
+            <dd>W klasie menu1, w liście będącej bezpośrednim potomkiem, w każdym znaczniku a będącym bezpośrednim potomkiem listy - zmienia kolor tła na szary-niebieskawy, kolor tekstu na biały oraz margines na 2px</dd>
+
+            <dt>.menu1>li:hover>a {
+                background: #456;
+            }</dt>
+            <dd>W klasie menu1, w liście (najechanej przez kursor) będącej bezpośrednim potomkiem - poziom pierwszy - nagłówek, w każdym znaczniku a będącym bezpośrednim potomkiem listy - </dd>
+
+            <dt>.menu1 ul {
+                list-style-type: none;
+            }</dt>
+            <dd>W klasie menu1, w znaczniku ul - usuwa typ listy, tak by nie posiadała ona punktorów</dd>
+
+            <dt>.menu1 ul {
+                padding: 0;
+            }</dt>
+            <dd>W klasie menu1, w znaczniku ul - redukuje wyściółkę do 0px, tak by nie zostawało wolne miejsce po punktorach</dd>
+
+            <dt>.menu1 li ul {
+                position: absolute;
+                border: 1px solid grey;
+                background: #eee;
+            }</dt>
+            <dd>W klasie menu1, w znaczniku ul należącym do dowolnej listy - zmienia typ pozycjonowania na absolutny, ustawia obramowanie na 1px szary oraz tło na jasny szary</dd>
+
+            <dt>.menu1 li:hover ul {
+                display: block;
+            }</dt>
+            <dd>W klasie menu1, w znaczniku ul należącym do dowolnej (najechanej przez kursor) listy - zmienia typ pozycjonowania na blokowy (tak by lista drugiego poziomu stała się widoczna)</dd>
+
+            <dt>.menu1>li {
+                display: table-cell;
+                padding: 0;
+                border: none;
+            }</dt>
+            <dd>W klasie menu1, w liście będącej bezpośrednim potomkiem - wyświetlanie elementu jest zmieniane na komórkę tabeli, wyściółka jest redukowana do 0px, a obramowanie jest wyłączane</dd>
+        </dl>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zadanie 1b</title>
+    <link rel="stylesheet" href="//code.jquery.com/ui/1.13.0/themes/base/jquery-ui.css">
+    <link rel="stylesheet" href="/resources/demos/style.css">
+    <style>
+        #draggable,
+        #draggable2,
+        #draggable3 {
+            width: 100px;
+            height: 100px;
+            padding: 0.5em;
+            float: left;
+            margin: 0 10px 10px 0;
+        }
+    </style>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"></script>
+    <script src="https://code.jquery.com/ui/1.13.0/jquery-ui.js"></script>
+    <script>
+        $(function () {
+            $("#draggable").draggable({ scroll: true });
+            $("#draggable2").draggable({ scroll: true, scrollSensitivity: 100 });
+            $("#draggable3").draggable({ scroll: true, scrollSpeed: 100 });
+        });
+    </script>
+</head>
+
+<body>
+    <div id="draggable" class="ui-widget-content">
+        <p>Scroll set to true, default settings</p>
+    </div>
+
+    <div id="draggable2" class="ui-widget-content">
+        <p>scrollSensitivity set to 100</p>
+    </div>
+
+    <div id="draggable3" class="ui-widget-content">
+        <p>scrollSpeed set to 100</p>
+    </div>
+
+    <div style="height: 5000px; width: 1px;"></div>
+</body>
+
+</html>

@@ -1,0 +1,105 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zadanie 1</title>
+</head>
+
+<body>
+    <h1>Podpunkt a)</h1>
+    <svg width="1316" height="384">
+        <defs>
+            <filter id="f3" x="0" y="0" width="200%" height="200%">
+                <feOffset result="offOut" in="SourceAlpha" dx="20" dy="20" />
+                <feGaussianBlur result="blurOut" in="offOut" stdDeviation="10" />
+                <feBlend in="SourceGraphic" in2="blurOut" mode="normal" />
+            </filter>
+            <linearGradient id="linearG" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" style="stop-color: rgb(255,255,0); stop-opacity: 1;" />
+                <stop offset="100%" style="stop-color: rgb(255,0,0); stop-opacity: 1;" />
+            </linearGradient>
+            <linearGradient id="linearG2" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" style="stop-color: rgb(128, 16, 160); stop-opacity: 1;" />
+                <stop offset="100%" style="stop-color: rgb(255,128,0); stop-opacity: 1;" />
+            </linearGradient>
+            <linearGradient id="linearG3" x1="0%" y1="0%" x2="100%" y2="0%">
+                <stop offset="0%" style="stop-color: rgb(160, 16, 16); stop-opacity: 1;" />
+                <stop offset="50%" style="stop-color: rgb(255, 80, 0); stop-opacity: 1;" />
+                <stop offset="100%" style="stop-color: rgb(255, 224, 0); stop-opacity: 1;" />
+            </linearGradient>
+            <radialGradient id="radialG" cx="50%" cy="50%" r="50%" fx="50%" fy="50%">
+                <stop offset="0%" style="stop-color: rgb(255,255,255); stop-opacity: 0;" />
+                <stop offset="100%" style="stop-color: rgb(0,0,255); stop-opacity: 1;" />
+            </radialGradient>
+        </defs>
+        <circle cx="160" cy="192" r="128" style="fill: url(#radialG); stroke-width: 4; stroke: rgb(0, 0, 96);" />
+        <rect x="320" y="64" width="192" height="256"
+            style="fill: rgb(0,255,0); stroke-width: 6; stroke: rgb(0,0,0); filter: url(#f3);" />
+        <ellipse cx="672" cy="192" rx="128" ry="64" style="fill: url(#linearG); stroke: orange; stroke-width: 2;" />
+        <polygon points="1024,302 832,192 1023,81" style="fill: crimson; stroke: url(#linearG3); stroke-width: 8;"
+            transform="translate(1118 -736) rotate(90 0 0)" />
+        <polygon points="1278,256 1168,320 1057,256 1057,128 1168,64 1278,128"
+            style="fill: url(#linearG2); stroke-width: 8; stroke: rgb(192, 16, 64);" />
+    </svg>
+
+    <h1>Podpunkt b)</h1>
+    <svg width="1316" height="384">
+        <path d="M32,192a128,128 0 1,0 256,0a128,128 0 1,0 -256,0"
+            style="fill: url(#radialG); stroke-width: 4; stroke: rgb(0, 0, 96);" />
+        <path d="M320,64h192v256h-192z"
+            style="fill: rgb(0,255,0); stroke-width: 6; stroke: rgb(0,0,0); filter: url(#f3);" />
+        <path d="M544,192a128,64 0 1,0 256,0a128,64 0 1,0 -256,0"
+            style="fill: url(#linearG); stroke: orange; stroke-width: 2;" />
+        <path d="M1024,302L832 192 1023 81z" style="fill: crimson; stroke: url(#linearG3); stroke-width: 8;"
+            transform="translate(1118 -736) rotate(90 0 0)" />
+        <path d="M1278,256L1168 320 1057 256 1057 128 1168 64 1278 128z"
+            style="fill: url(#linearG2); stroke-width: 8; stroke: rgb(192, 16, 64);" />
+    </svg>
+
+    <h1>Podpunkt c)</h1>
+    <svg width="1316" height="384">
+        <path id="MyPath" d="M32,192a128,128 0 1,0 256,0a128,128 0 1,0 -256,0"
+            style="fill: url(#radialG); stroke-width: 4; stroke: rgb(0, 0, 96);" />
+        <path id="MyPath2" d="M320,64h192v256h-192z"
+            style="fill: rgb(0,255,0); stroke-width: 6; stroke: rgb(0,0,0); filter: url(#f3);" />
+        <path id="MyPath3" d="M544,192a128,64 0 1,0 256,0a128,64 0 1,0 -256,0"
+            style="fill: url(#linearG); stroke: orange; stroke-width: 2;" />
+        <path id="MyPath4" d="M1024,302L832 192 1023 81z"
+            style="fill: crimson; stroke: url(#linearG3); stroke-width: 8;"
+            transform="translate(1118 -736) rotate(90 0 0)" />
+        <path id="MyPath5" d="M1278,256L1168 320 1057 256 1057 128 1168 64 1278 128z"
+            style="fill: url(#linearG2); stroke-width: 8; stroke: rgb(192, 16, 64);" />
+        <g>
+            <text font-size="20" dy="4%" fill="red">
+                <textPath xlink:href="#MyPath">
+                    Tekst Tekst Tekst Tekst Tekst Tekst Tekst Tekst Tekst Tekst Tekst Tekst Tekst Tekst Tekst
+                </textPath>
+            </text>
+            <text font-size="20" dy="4%" fill="crimson">
+                <textPath xlink:href="#MyPath2" side="right">
+                    Tekst Tekst Tekst Tekst Tekst Tekst Tekst Tekst Tekst Tekst Tekst Tekst Tekst Tekst Tekst
+                </textPath>
+            </text>
+            <text font-size="20" dy="4%" fill="blue">
+                <textPath xlink:href="#MyPath3">
+                    Tekst Tekst Tekst Tekst Tekst Tekst Tekst Tekst Tekst Tekst Tekst Tekst Tekst Tekst Tekst
+                </textPath>
+            </text>
+            <text font-size="20" dy="4%" fill="#024">
+                <textPath xlink:href="#MyPath4" side="right">
+                    Tekst Tekst Tekst Tekst Tekst Tekst Tekst Tekst Tekst Tekst Tekst Tekst Tekst Tekst Tekst
+                </textPath>
+            </text>
+            <text font-size="20" dy="4%" fill="black">
+                <textPath xlink:href="#MyPath5" side="right">
+                    Tekst Tekst Tekst Tekst Tekst Tekst Tekst Tekst Tekst Tekst Tekst Tekst Tekst Tekst Tekst
+                </textPath>
+            </text>
+        </g>
+    </svg>
+</body>
+
+</html>

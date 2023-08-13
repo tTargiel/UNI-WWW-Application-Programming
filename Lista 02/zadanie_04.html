@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zadanie 4</title>
+    <style>
+        table.A {
+            background-color: red;
+            border: 4px solid green;
+            color: blue;
+            font: 15px Arial, sans-serif;
+        }
+
+        table.A th {
+            border: 1px solid #000;
+            height: 60px;
+            width: 120px;
+        }
+
+        table.A td {
+            padding-left: 20px;
+        }
+
+        table.A tr:nth-child(2n) td:nth-child(2n-1) {
+            background-color: lightcoral;
+        }
+
+        table.B {
+            background-color: lightblue;
+            border: 4px solid red;
+            color: green;
+            font: italic small-caps bold 12px/30px Georgia, serif;
+        }
+
+        table.B th {
+            border: 1px solid #000;
+            height: 80px;
+            width: 120px;
+        }
+
+        table.B td {
+            padding-left: 40px;
+        }
+
+        table.B tr:nth-child(2n) td:nth-child(2n) {
+            background-color: lightgoldenrodyellow;
+        }
+    </style>
+</head>
+
+<body>
+    <table class="A">
+        <tr>
+            <th>Nagłówek A</th>
+            <th>Nagłówek A</th>
+            <th>Nagłówek A</th>
+        </tr>
+        <tr>
+            <td>Tekst</td>
+            <td>Tekst</td>
+            <td>Tekst</td>
+        </tr>
+        <tr>
+            <td>Tekst</td>
+            <td>Tekst</td>
+            <td>Tekst</td>
+        </tr>
+        <tr>
+            <td>Tekst</td>
+            <td>Tekst</td>
+            <td>Tekst</td>
+        </tr>
+    </table>
+    <br>
+    <table class="B">
+        <tr>
+            <th>Nagłówek B</th>
+            <th>Nagłówek B</th>
+            <th>Nagłówek B</th>
+        </tr>
+        <tr>
+            <td>Tekst</td>
+            <td>Tekst</td>
+            <td>Tekst</td>
+        </tr>
+        <tr>
+            <td>Tekst</td>
+            <td>Tekst</td>
+            <td>Tekst</td>
+        </tr>
+        <tr>
+            <td>Tekst</td>
+            <td>Tekst</td>
+            <td>Tekst</td>
+        </tr>
+    </table>
+</body>
+
+</html>

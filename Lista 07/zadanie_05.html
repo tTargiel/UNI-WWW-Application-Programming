@@ -1,0 +1,108 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zadanie 5</title>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <style>
+        h1 {
+            text-align: center
+        }
+
+        nav {
+            width: auto;
+            margin: auto
+        }
+
+        #hanoi {
+            height: 500px;
+            width: 990px;
+            margin: auto;
+            border: 1px solid grey;
+        }
+
+        #hanoi>div {
+            height: 500px;
+            width: 330px;
+            border: 1px solid green;
+            vertical-align: bottom;
+            display: table-cell
+        }
+
+        .k {
+            background: yellow;
+            border: 1px solid grey;
+            height: 48px;
+            margin: auto;
+            border-radius: 25px
+        }
+
+        .k.cur {
+            background: green
+        }
+
+        * {
+            font-family: Sans;
+        }
+    </style>
+</head>
+
+<body>
+
+    <h1>Hanoi</h1>
+
+    <center>Przenieś wieżę do prawej klatki</center><br>
+
+    <div id='hanoi'>
+        <div id='a'></div>
+        <div id='b'></div>
+        <div id='c'></div>
+    </div>
+
+    <script>
+        var cur;
+        var i;
+        var offsetX = 0;
+        var offsetY = 0;
+
+        var from, to;
+        for (i = 2; i < 10; i++)
+            $("#a").append("<div id='" + i + "' class='k' style='width:" + i * 40 + "px'></div>");
+
+        $('.k').draggable({
+            helper: "clone",
+            appendTo: "body",
+            start: function (event, ui) {
+                offsetX = event.clientX - ui.offset.left;
+                offsetY = event.clientY - ui.offset.top;
+                $(this).hide();
+            },
+            stop: function () { $(this).show(); },
+            drag: function (event, ui) {
+                ui.position.left += offsetX - Math.floor(ui.helper.outerWidth() / 2);
+                ui.position.top += offsetY - Math.floor(ui.helper.outerHeight() / 2);
+            }
+        });
+
+        $("#hanoi > div").droppable({
+            accept: function (draggable) {
+                to = $(this).children(":first").attr("id");
+                from = draggable.attr("id");
+                if ((to == undefined || to > from) && draggable.is(":first-child")) { // Domyślne warunki z bazowej gry + sprawdzenie czy aktualnie przenoszony obiekt jest pierwszym dzieckiem diva nad którym się znajduje  
+                    return true;
+                }
+            },
+            drop: function (event, ui) {
+                ui.draggable.prependTo(this);
+            }
+        });
+    </script>
+
+</body>
+
+</html>

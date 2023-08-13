@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zadanie 5</title>
+    <style>
+        .Anglistyka {
+            background-color: rgb(175, 90, 218);
+        }
+
+        .Biologia {
+            background-color: rgb(38, 161, 38);
+        }
+
+        .Chemia {
+            background-color: rgb(219, 78, 78);
+        }
+
+        .Fizyka {
+            background-color: yellow;
+        }
+
+        .Matematyka {
+            background-color: rgb(71, 152, 219);
+        }
+
+        div.wykres>div {
+            border: 1px solid grey;
+            box-shadow: 10px 10px 5px grey;
+            display: inline-block;
+            margin-top: 50px;
+            margin: 15px;
+            vertical-align: bottom;
+            width: 50px;
+        }
+
+        div.wykres>div b {
+            display: box;
+            position: relative;
+            text-shadow: 5px 5px 5px grey;
+            top: -20px;
+        }
+
+        div.wykres div div {
+            color: white;
+            position: relative;
+            text-shadow: 0px 0px 5px black;
+            top: -19px;
+        }
+    </style>
+</head>
+
+<body>
+
+</body>
+<button onclick="wszyscy();"> Wszyscy </button>
+<button onclick="pokaz('Anglistyka');"> Anglistyka </button>
+<button onclick="pokaz('Biologia');"> Biologia </button>
+<button onclick="pokaz('Chemia');"> Chemia </button>
+<button onclick="pokaz('Fizyka');"> Fizyka </button>
+<button onclick="pokaz('Matematyka');"> Matematyka </button>
+<button onclick="wypisz(policz(student));"> Wypisz ilość kierunkami </button>
+<button onclick="wykres(policz(student));"> Wykres </button>
+<div id="lista"> </div>
+
+<script>
+    var kierunki = ["anglistyka", "biologia", "chemia", "fizyka", "matematyka"];
+    var kolory = ["red", "orange", "yellow", "green", "blue"];
+    var lista = document.getElementById("lista");
+    var student = [
+        { imie: "Ola", nazwisko: "Lis", kierunek: "Fizyka", wzrost: 170 },
+        { imie: "Ala", nazwisko: "Góral", kierunek: "Chemia", wzrost: 165 },
+        { imie: "Jan", nazwisko: "Nowak", kierunek: "Fizyka", wzrost: 180 },
+        { imie: "Wiktor", nazwisko: "Kowalski", kierunek: "Biologia", wzrost: 193 },
+        { imie: "Magda", nazwisko: "Sobczak", kierunek: "Anglistyka", wzrost: 165 },
+        { imie: "Michał", nazwisko: "Mazurek", kierunek: "Matematyka", wzrost: 172 },
+        { imie: "Paweł", nazwisko: "Lis", kierunek: "Biologia", wzrost: 184 },
+        { imie: "Julia", nazwisko: "Długosz", kierunek: "Chemia", wzrost: 175 },
+        { imie: "Kinga", nazwisko: "Jaworska", kierunek: "Matematyka", wzrost: 177 },
+        { imie: "Patrycja", nazwisko: "Michalak", kierunek: "Biologia", wzrost: 168 },
+        { imie: "Mateusz", nazwisko: "Tomaszewski", kierunek: "Chemia", wzrost: 185 },
+        { imie: "Tomasz", nazwisko: "Kamiński", kierunek: "Fizyka", wzrost: 194 },
+        { imie: "Artur", nazwisko: "Wróblewski", kierunek: "Matematyka", wzrost: 180 },
+        { imie: "Łukasz", nazwisko: "Urbanek", kierunek: "Biologia", wzrost: 194 },
+        { imie: "Alicja", nazwisko: "Lewandowska", kierunek: "Fizyka", wzrost: 173 },
+        { imie: "Ewelina", nazwisko: "Zielińska", kierunek: "Biologia", wzrost: 170 },
+        { imie: "Grzegorz", nazwisko: "Jasiński", kierunek: "Anglistyka", wzrost: 190 },
+        { imie: "Eryk", nazwisko: "Maciejewski", kierunek: "Chemia", wzrost: 178 },
+        { imie: "Natasza", nazwisko: "Jankowska", kierunek: "Matematyka", wzrost: 159 },
+        { imie: "Grzegorz", nazwisko: "Szymczak", kierunek: "Anglistyka", wzrost: 168 }
+    ];
+
+    wszyscy();
+
+    function wszyscy() {
+        var w = "<h2>Studenci</h2><ol>";
+
+        for (let i = 0; i < student.length; i++) {
+            w += "<li class=" + student[i].kierunek + " style='width:" + 2 * student[i].wzrost + "px;'>" + student[i].imie + " " + student[i].nazwisko + " - " + student[i].kierunek + "</li>"
+        }
+
+        w += "</ol>"
+        lista.innerHTML = w;
+    }
+
+    function pokaz(n) {
+        lista.innerHTML = " ";
+        var k = "<h2>" + n + "</h2><ol>";
+
+        for (let i = 0; i < student.length; i++) {
+            if (student[i].kierunek == n) {
+                k += "<li class=" + student[i].kierunek + " style='width:" + 2 * student[i].wzrost + "px;'>" + student[i].imie + " " + student[i].nazwisko + "</li>"
+            }
+        }
+
+        k += "</ol>"
+        lista.innerHTML = k;
+    }
+
+    function policz(student) {
+        var ang = 0;
+        var biol = 0;
+        var chem = 0;
+        var fiz = 0;
+        var mat = 0;
+        var ilosci = [ang, biol, chem, fiz, mat];
+
+        for (let i in student) {
+            if (student[i].kierunek == "Anglistyka") {
+                ilosci[0] += 1;
+            }
+            else if (student[i].kierunek == "Biologia") {
+                ilosci[1] += 1;
+            }
+            else if (student[i].kierunek == "Chemia") {
+                ilosci[2] += 1;
+            }
+            else if (student[i].kierunek == "Fizyka") {
+                ilosci[3] += 1;
+            }
+            else if (student[i].kierunek == "Matematyka") {
+                ilosci[4] += 1;
+            }
+
+            ile = "{" + "anglistyka: " + ilosci[0] + ", biologia: " + ilosci[1] + ", chemia: " + ilosci[2] + ", fizyka: " + ilosci[3] + ", matematyka: " + ilosci[4] + "}";
+        }
+
+        console.log(ile);
+        return ilosci;
+    }
+
+    function wypisz(ilosci) {
+        lista.innerHTML = " ";
+        lista.innerHTML = "<ul>";
+
+        for (let i in kierunki, ilosci) {
+            lista.innerHTML += "<li>" + kierunki[i] + ": " + ilosci[i] + "</li>"
+        }
+
+        lista.innerHTML += "</ul>"
+    }
+
+    function wykres(ilosci) {
+        let t = '<h2>' + "Ilość studentów na poszczególnych kierunkach" + '</h2>';
+        t += '<div class="wykres">';
+
+        for (let i in ilosci, kierunki, kolory) {
+            t += "<div style='height:" + ilosci[i] * 32 + "px; background:" + kolory[i] + ";'>";
+            t += "<b>" + kierunki[i] + "</b>";
+            t += "<div>" + ilosci[i] + "</div>";
+            t += "</div>";
+        }
+
+        t += '</div>';
+        lista.innerHTML = t;
+    } 
+</script>
+
+</html>

@@ -1,0 +1,167 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zadanie 6</title>
+    <style>
+        #ramka {
+            background-color: white;
+            border: 1px solid grey;
+            height: 768px;
+            margin: auto;
+            position: relative;
+            width: 1024px;
+        }
+
+        body {
+            background-color: lightblue;
+        }
+
+        b {
+            display: block;
+            height: 48px;
+            position: absolute;
+            text-align: center;
+            width: 48px;
+        }
+
+        div,
+        h1,
+        p {
+            margin: 10px;
+            text-align: center;
+        }
+
+        img {
+            border-radius: 50%;
+            height: 48px;
+            width: 48px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Koronawiruski</h1>
+    <div id="ramka">
+        <script>
+            for (let i = 0; i < 8; i++) {
+                if (i % 2 == 0) {
+                    document.write("<b onclick='kill(this);'><img src='./media/wirus.png'></b>");
+                }
+                else {
+                    document.write("<b onclick='kill(this);'><img src='./media/koronawirus.png'></b>");
+                }
+            }
+        </script>
+    </div>
+
+    <div>
+        <button onclick="poziom = 50; ile = 8; generuj();"> Poziom 1 </button>
+        <button onclick="poziom = 30; ile = 12; generuj();"> Poziom 2 </button>
+        <button onclick="poziom = 10; ile = 16; generuj();"> Poziom 3 </button>
+        <button onclick="poziom = 5; ile = 20; generuj();"> Poziom 4 </button>
+    </div>
+
+    <div>
+        <button onclick="run=false;"> Stop </button>
+        <button onclick="run=true; step();"> Start </button>
+        <button onclick="generuj();"> Nowa gra - generuj </button>
+    </div>
+
+    <p id="status"></p>
+
+    <script>
+        var czas = 0;
+        var ile = 8;
+        var poziom = 50;
+        var predkosc
+        var run = false;
+        var wirusy = document.getElementsByTagName("b");
+        document.getElementById("status").innerHTML = "Liczba pozostałych koronawirusków: " + wirusy.length;
+
+        for (wirus of wirusy) {
+            wirus.x = 24 + Math.random() * 952;
+            wirus.y = 24 + Math.random() * 696;
+
+            wirus.vx = Math.random() * 6;
+            wirus.vy = Math.random() * 6;
+
+            wirus.style.left = wirus.x + "px";
+            wirus.style.top = wirus.y + "px";
+            wirus.style.transform = "rotate(" + Math.atan2(wirus.vy, wirus.vx) + "rad)";
+        }
+
+        function step() {
+            czas += 1;
+
+            for (let wirus of wirusy) {
+                wirus.x += wirus.vx;
+                wirus.y += wirus.vy;
+
+                if (wirus.x > 976 || wirus.x < 0) wirus.vx *= -1;
+                if (wirus.y > 720 || wirus.y < 0) wirus.vy *= -1;
+
+                wirus.style.left = wirus.x + "px";
+                wirus.style.top = wirus.y + "px";
+            }
+
+            if (run) {
+                predkosc = setTimeout(step, poziom);
+            }
+        }
+
+        function generuj() {
+            clearTimeout(predkosc);
+            czas = 0;
+
+            while (wirusy[0]) wirusy[0].parentNode.removeChild(wirusy[0]);
+
+            for (let i = 0; i < ile; i++) {
+                if (i % 2 == 0) {
+                    var node = document.createElement("b");
+                    node.setAttribute("onclick", "kill(this);");
+                    node.innerHTML = "<img src='./media/wirus.png'>";
+                    document.getElementById("ramka").appendChild(node);
+                }
+                else {
+                    var node = document.createElement("b");
+                    node.setAttribute("onclick", "kill(this);");
+                    node.innerHTML = "<img src='./media/koronawirus.png'>";
+                    document.getElementById("ramka").appendChild(node);
+                }
+            }
+
+            document.getElementById("status").innerHTML = "Liczba pozostałych koronawirusków: " + wirusy.length;
+            wirusy = document.getElementsByTagName("b");
+
+            for (wirus of wirusy) {
+                wirus.x = 24 + Math.random() * 952;
+                wirus.y = 24 + Math.random() * 696;
+
+                wirus.vx = Math.random() * 6;
+                wirus.vy = Math.random() * 6;
+
+                wirus.style.left = wirus.x + "px";
+                wirus.style.top = wirus.y + "px";
+                wirus.style.transform = "rotate(" + Math.atan2(wirus.vy, wirus.vx) + "rad)";
+            }
+        }
+
+        function kill(el) {
+            el.remove();
+
+            if (wirusy.length < 1) {
+                run = false;
+                document.getElementById("status").innerHTML = "Mission completed in: " + (czas / (1000 / poziom)) + " seconds";
+            }
+            else {
+                document.getElementById("status").innerHTML = "Liczba pozostałych koronawirusków: " + wirusy.length;
+            }
+        }
+    </script>
+</body>
+
+</html>

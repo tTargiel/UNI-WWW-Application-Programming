@@ -1,0 +1,55 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zadanie 10</title>
+    <style>
+        input {
+            width: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <input>x<sup>2</sup>+<input>x+<input>=0
+    <hr>
+    <button onclick="solve();">Rozwiąż</button>
+    <div></div>
+    <script>
+        function solve() {
+            let inp = document.getElementsByTagName("input");
+            let a = +inp[0].value,
+                b = +inp[1].value,
+                c = +inp[2].value;
+            let delta = b * b - 4 * a * c;
+            let x1 = (-b - Math.sqrt(delta)) / (2 * a);
+            let x2 = (-b + Math.sqrt(delta)) / (2 * a);
+            if (delta < 0) {
+                document.getElementsByTagName("div")[0].innerHTML =
+                    "Brak rozwiązań";
+            } else if (delta == 0) {
+                document.getElementsByTagName("div")[0].innerHTML =
+                    "x0=" + x1;
+            } else {
+                document.getElementsByTagName("div")[0].innerHTML =
+                    "x1=" + x1 + "<br>x2=" + x2;
+            }
+        }
+    </script>
+    <p>
+        Powyższy skrypt oblicza miejsca zerowe funkcji kwadratowej.
+        <br>
+        <br>
+        Jeżeli popatrzymy na funkcję solve() to jej działania są następujące: przypisanie
+        każdego elementu input do zmiennej inp, przyporządkowanie wartości do zmiennych
+        a,b i c używając wcześniej wprowadzonej zmiennej inp (tak na prawdę ta zmienna
+        to tablica z trzema elementami), kolejno obliczana jest delta oraz miejsca
+        zerowe, na samym końcu skrypt sprawdza warunki delty i wyświetla na ekranie
+        odpowiedni wynik.
+    </p>
+</body>
+
+</html>

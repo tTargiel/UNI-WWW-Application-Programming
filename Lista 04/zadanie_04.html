@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zadanie 4</title>
+    <style>
+        input {
+            width: 30px;
+        }
+    </style>
+</head>
+
+<body>
+    <table>
+        <tr>
+            <td rowspan="2" style="font-size: 3em">{</td>
+            <td><input>x+<input>y=<input></td>
+        </tr>
+        <tr>
+            <td><input>x+<input>y=<input></td>
+        </tr>
+    </table><button onclick="solve();">Rozwiąż</button>
+    <div id="wynik"></div>
+
+    <script>
+        function solve() {
+            let inp = document.getElementsByTagName("input");
+            let a1 = inp[0].value, b1 = inp[1].value, c1 = inp[2].value;
+            let a2 = inp[3].value, b2 = inp[4].value, c2 = inp[5].value;
+            let w = (a1 * b2) - (b1 * a2);
+            let wx = (c1 * b2) - (b1 * c2);
+            let wy = (a1 * c2) - (c1 * a2);
+
+            if (w != 0 && wx != 0 && wy != 0) {
+                document.getElementById("wynik").innerHTML = "x = " + (wx / w) + "<br>y =" + (wy / w);
+            }
+            else if (w == 0 && wx != 0 || w == 0 && wy != 0) {
+                document.getElementById("wynik").innerHTML = "Brak rozwiązań"
+            }
+            else if (w == 0 && wx == 0 && wy == 0) {
+                document.getElementById("wynik").innerHTML = "Istnieje nieskończenie wiele rozwiązań tego układu"
+            }
+        }
+    </script>
+</body>
+
+</html>

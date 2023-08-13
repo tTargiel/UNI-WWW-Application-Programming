@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zadanie 3</title>
+    <link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+    <script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+    <script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>
+    <style>
+        #box,
+        #box1 {
+            width: 626px;
+            margin: 10px auto;
+            clear: both;
+            position: absolute;
+        }
+
+        #box>div {
+            float: left;
+            box-sizing: border-box;
+            border: 1px solid green;
+            background: #eee
+        }
+
+        #box1 {
+            width: 626px;
+            margin: 10px auto;
+            clear: both;
+            margin-left: 50%;
+        }
+
+        #box1>div {
+            float: left;
+            box-sizing: border-box;
+            border: 1px solid green;
+            background: #eee
+        }
+
+        #box1>div.active {
+            background: #ddf
+        }
+
+        #box1>div.hover {
+            background: #eff
+        }
+
+        #messages {
+            margin-top: 650px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="gra">
+        <div id="box">
+        </div>
+        <div id="box1">
+        </div>
+    </div><br>
+    <div id="messages"></div>
+    <div id="imgButtons"></div><br>
+    <div id="levelButtons"></div>
+</body>
+
+<script>
+    var messages = document.getElementById('messages');
+    var lvl = 3;
+    var divSize = 626 / lvl;
+    var kolumny = lvl;
+    var wiersze = lvl;
+    var pozycjaWiersze = 0;
+    var pozycjaKolumny = 0;
+    var images = ["https://image.freepik.com/free-photo/grey-kitty-with-monochrome-wall-her_23-2148955113.jpg",
+        "https://image.freepik.com/free-photo/adorable-pug-puppy-solo-portrait_53876-64831.jpg",
+        "https://image.freepik.com/free-photo/beagle-puppy-wearing-crown_53876-74783.jpg",
+        "https://image.freepik.com/free-photo/adorable-chocolate-labrador-retriever-portrait_53876-64833.jpg",
+        "https://image.freepik.com/free-photo/portrait-cute-bulldog-puppy-wearing-santa-hat_53876-64844.jpg",
+        "https://image.freepik.com/free-photo/front-view-funny-cute-dog-concept_23-2148786493.jpg",
+        "https://image.freepik.com/free-photo/adorable-pug-puppy-solo-portrait_53876-64819.jpg",
+        "https://image.freepik.com/free-photo/adorable-jack-russell-retriever-puppy-portrait_53876-64825.jpg",
+        "https://image.freepik.com/free-photo/adorable-beagle-puppy-solo-portrait_53876-64815.jpg",
+        "https://image.freepik.com/free-photo/close-up-view-beautiful-dog-with-bow-tie_23-2148786566.jpg"];
+    var btn;
+    var d = 0;
+
+    setImage(0);
+
+    for (let btn = 0; btn < 10; btn++) // Umieszczanie przycisków do zmiany obrazka lub wielkości planszy
+    {
+        document.getElementById("imgButtons").innerHTML += "<button onclick='setImage(" + btn + ")'>Obrazek " + btn + "</button>";
+    }
+
+    for (let lvl = 3; lvl <= 10; lvl++) {
+        document.getElementById("levelButtons").innerHTML += "<button onclick='setBoardSize(" + lvl + ")'> " + lvl + "x" + lvl + "</button>";
+    }
+
+    function setImage(btn) // Przechowuje informacje o aktualnym indeksie obrazka
+    {
+        ktory = btn;
+        setBoard();
+    }
+
+    function setBoardSize(lvl) // Przechowuje informacje o aktualnie wybranym rozmiarze planszy
+    {
+        divSize = 626 / lvl;
+        kolumny = lvl;
+        wiersze = lvl;
+        setBoard();
+    }
+
+    function setBoard() // Ustawia planszę 
+    {
+        messages.innerHTML = "";
+        document.getElementById("box").innerHTML = "";
+        document.getElementById("box1").innerHTML = "";
+        pozycjaWiersze = 0;
+        d = 0;
+
+        for (let i = 0; i < wiersze; i++) {
+            pozycjaKolumny = 0;
+
+            for (let j = 0; j < kolumny; j++) {
+                document.getElementById("box").innerHTML += "<div class='puzzle' id=" + d + " style='background-image: url(" + images[ktory] + "); background-position:" + pozycjaKolumny + "px " + pozycjaWiersze + "px;width:" + divSize + "px;height:" + divSize + "px'></div>";//umieszcze kolejne divy zawierajace rozne fragmenty obrazkow
+                pozycjaKolumny -= divSize; // Odejmujemy bo background-position jest "przyczepione" do prawego górnego rogu
+                document.getElementById("box1").innerHTML += "<div id=" + d + " style='width:" + divSize + "px;height:" + divSize + "px'></div>";
+                d += 1;
+            }
+
+            pozycjaWiersze -= divSize;
+        }
+
+        $(function () {
+            $(".puzzle").draggable({
+                appendTo: "body",
+                helper: "clone",
+                start: function () { $(this).hide(); },
+                stop: function () { $(this).show(); }
+            });
+
+            for (i = 0; i < $("#box").children().length; i++) { // Do #box dodaje jedno z jego dzieci, na miejscu o wylosowanym indeksie, usuwa poprzedni element który się tam znajdował(drugi argument splice)
+                $("#box").append($("#box").children().splice(Math.floor(Math.random() * $("#box").children().length), 1)); // Mieszanie obrazków
+            }
+
+            $("#box1>div,#box>div").droppable({
+                activeClass: "active",
+                hoverClass: "hover",
+                accept: function (a) { return $(this).html() == ''; }, // Można położyć tylko jeśli puste pole
+                drop: function (event, ui) {
+                    ui.draggable.appendTo(this);
+                    ifWin(); // Po każdym umieszczeniu elementu na jakimś polu sprawdza czy obrazek jest poprawnie ułożony
+                }
+            });
+        });
+    }
+
+    function ifWin() // Sprawdza czy wygrana
+    {
+        let czyWygrana = true;
+        let czyWszystko = $('#box1>div>div')
+
+        if (czyWszystko.length == d) // Czy wszystkie pola są zajęte
+        {
+            for (let i = 0; i < d; i++) {
+                if (($(czyWszystko[i]).attr('id')) != i) // Sprawdza czy id kolejnych elementów rowne jest i - czy są one na poprawnych pozycjach
+                {
+                    czyWygrana = false;
+                    break; // Jeśli dany element nie jest na swoim miejscu przerywa pętla
+                }
+            }
+
+            if (czyWygrana) {
+                messages.innerHTML += "Gratuluję wygranej! Czy chcesz spróbować swoich sił na wyższym poziomie? <br>"; // Jeśli podczas pętli nie natrafiono na element w złym miejscu
+                messages.innerHTML += "<button onclick='setBoardSize(lvl+1)'>Tak</button>";
+                messages.innerHTML += "<button onclick='setImage(0);setBoardSize(3)'>Nie</button>"; // Jeśli użytkownik nie chce grać na wyższym poziomie przywraca ustawienia domyślne
+            }
+        }
+    }
+</script>
+
+</html>

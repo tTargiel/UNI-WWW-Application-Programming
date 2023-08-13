@@ -1,0 +1,78 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+	<meta charset="UTF-8" />
+	<meta http-equiv="X-UA-Compatible" content="IE=edge" />
+	<meta name="viewport" content="width=device-width, initial-scale=1.0" />
+	<title>Zadanie 2</title>
+	<style>
+		table,
+		td {
+			border-collapse: collapse;
+			border: 1px solid black;
+			padding: 10px;
+		}
+	</style>
+</head>
+
+<body>
+	<div id="ramka"></div>
+	<button onclick="wypiszA(imiona)">Imiona A</button>
+	<button onclick="wypiszA(liczby)">Liczby A</button>
+	<button onclick="wypiszB(imiona)">Imiona B</button>
+	<button onclick="wypiszB(liczby)">Liczby B</button>
+	<button onclick="wypiszC(imiona)">Imiona C</button>
+	<button onclick="wypiszC(liczby)">Liczby C</button>
+	<button onclick="wypiszD(imiona)">Imiona D</button>
+	<button onclick="wypiszD(liczby)">Liczby D</button>
+	<script>
+		var imiona = ["ola", "ala", "Ela"];
+		var liczby = [2, 3, 5, 7, 10, 12, 23];
+		function wypiszA(tab) {
+			let ramka = document.getElementById("ramka");
+			s = "";
+			
+			for (let x of tab) {
+				s += x + " ";
+			}
+			
+			ramka.innerHTML = s;
+		}
+		
+		function wypiszB(tab) {
+			let ramka = document.getElementById("ramka");
+			s = "<ul>";
+			
+			for (let x of tab) {
+				s += "<li>" + x + "</li>";
+			}
+			
+			ramka.innerHTML = s + "</ul>";
+		}
+		
+		function wypiszC(tab) {
+			let ramka = document.getElementById("ramka");
+			s = "<table><tr>";
+			
+			for (let x of tab) {
+				s += "<td>" + x + "</td>";
+			}
+			
+			ramka.innerHTML = s + "</tr></table>";
+		}
+		
+		function wypiszD(tab) {
+			let ramka = document.getElementById("ramka");
+			s = "<table>";
+			
+			for (let x of tab) {
+				s += "<tr><td>" + x + "</td></tr>";
+			}
+			
+			ramka.innerHTML = s + "</table>";
+		}
+	</script>
+</body>
+
+</html>

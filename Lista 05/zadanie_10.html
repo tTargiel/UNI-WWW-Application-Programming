@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zadanie 10</title>
+</head>
+
+<body>
+    <canvas id="mojaCanva" width="1080" height="720" style="border: 1px solid #d3d3d3;">
+        Your browser does not support the HTML canvas tag.</canvas>
+    </br>
+    <button onclick="run = true; ruch();">START</button>
+    <button onclick="run = false;">STOP</button>
+    </br></br></br>
+    <form onsubmit="dodaj(this); return false;">
+        <input type="text" id="x" value="" placeholder="x">
+        <input type="text" id="y" value="" placeholder="y">
+        <input type="text" id="vx" value="" placeholder="vx">
+        <input type="text" id="vy" value="" placeholder="vy">
+        <input type="text" id="height" value="" placeholder="height">
+        <select id="obiekt">
+            <option></option>
+            <option>balwan</option>
+            <option>gwiazda</option>
+            <option>kolo</option>
+            <option>kwadrat</option>
+        </select>
+        </br></br>
+        <input type="submit" value="Dodaj obiekt">
+    </form>
+    </br></br>
+    <div id="usuwanie"></div>
+
+    <script>
+        var ctx = document.querySelector("canvas").getContext("2d");
+        var obiekty = [
+            { x: 162, y: 430, vx: 2, vy: -1, height: 236, rysuj: gwiazda },
+            { x: 535, y: 222, vx: -1, vy: 2, height: 495, rysuj: gwiazda },
+            { x: 516, y: 56, vx: 1, vy: -1, height: 146, rysuj: kolo },
+            { x: 497, y: 201, vx: -1, vy: 3, height: 138, rysuj: kolo },
+            { x: 277, y: 457, vx: 3, vy: -1, height: 152, rysuj: kwadrat },
+            { x: 130, y: 106, vx: -3, vy: 3, height: 39, rysuj: kwadrat },
+            { x: 103, y: 224, vx: 2, vy: -2, height: 263, rysuj: balwan },
+            { x: 161, y: 11, vx: -1, vy: 1, height: 385, rysuj: balwan }
+        ];
+        var run = false;
+        var d;
+
+        pokaz(obiekty);
+
+        function pokaz(obiekty) {
+            ctx.fillStyle = "#FF88FF";
+            ctx.fillRect(0, 0, 1080, 720);
+
+            for (let o of obiekty) {
+                o.rysuj(o.x, o.y, o.height);
+            }
+        }
+
+        function dodaj(x) {
+            if (x.obiekt.value == "balwan") {
+                d = balwan;
+            }
+            else if (x.obiekt.value == "gwiazda") {
+                d = gwiazda;
+            }
+            else if (x.obiekt.value == "kolo") {
+                d = kolo;
+            }
+            else if (x.obiekt.value == "kwadrat") {
+                d = kwadrat;
+            }
+
+            obiekty.push({ x: Number(x.x.value), y: Number(x.y.value), vx: Number(x.vx.value), vy: Number(x.vy.value), height: Number(x.height.value), rysuj: d });
+            pokaz(obiekty);
+            usuwanie();
+
+            // console.log(obiekty);
+        }
+
+        function ruch() {
+            for (let o of obiekty) {
+                o.x += o.vx; if (o.x < 0 || o.x + o.height > 1080) o.vx *= -1;
+                o.y += o.vy; if (o.y < 0 || o.y + o.height > 720) o.vy *= -1;
+            }
+
+            pokaz(obiekty);
+
+            if (run) {
+                setTimeout(ruch, 30)
+            }
+        }
+
+        function balwan(x, y, height) {
+            ctx.fillStyle = "#dddddd";
+            ctx.lineWidth = 4;
+            ctx.strokeStyle = "#def";
+
+            // "Ciało" bałwana (idąc od dołu)
+            ctx.beginPath();
+            ctx.arc(x + (height / 2), y + (height / 2), (height / 2 / 2), 0, 2 * Math.PI);
+            ctx.stroke();
+            ctx.fill();
+
+            ctx.beginPath();
+            ctx.arc(x + (height / 2), y + (height / 2 * 0.5), (height / 2 / 3), 0, 2 * Math.PI);
+            ctx.stroke();
+            ctx.fill();
+
+            ctx.beginPath();
+            ctx.arc(x + (height / 2), y + (height / 2 * 0.15), (height / 2 / 4), 0, 2 * Math.PI);
+            ctx.stroke();
+            ctx.fill();
+
+            // Guziki bałwana (idąc od dołu)
+            ctx.fillStyle = "#0000FF";
+            ctx.lineWidth = 2;
+
+            ctx.beginPath();
+            ctx.arc(x + (height / 2), y + (height / 2 * 1.2), (height / 2 / 30), 0, 2 * Math.PI);
+            ctx.stroke();
+            ctx.fill();
+
+            ctx.beginPath();
+            ctx.arc(x + (height / 2), y + (height / 2 * 0.5 * 1.8), (height / 2 / 30), 0, 2 * Math.PI);
+            ctx.stroke();
+            ctx.fill();
+
+            ctx.beginPath();
+            ctx.arc(x + (height / 2), y + (height / 2 * 0.15 * 4), (height / 2 / 30), 0, 2 * Math.PI);
+            ctx.stroke();
+            ctx.fill();
+
+            // Marchwiowy nosek
+            ctx.fillStyle = "#FF6633";
+
+            ctx.beginPath();
+            ctx.moveTo(x + (height / 2), y + (height / 2 * 0.15));
+            ctx.lineTo(x + (height / 2 / 2), y + (height / 2 * 0.2));
+            ctx.lineTo(x + (height / 2), y + (height / 2 * 0.25));
+            ctx.fill();
+
+            // Oczka bałwana
+            ctx.fillStyle = "gray";
+
+            ctx.beginPath();
+            ctx.arc(x + (height / 2 / 1.15), y + (height / 2 * 0.08), (height / 2 / 24), 0, 2 * Math.PI);
+            ctx.stroke();
+            ctx.fill();
+
+            ctx.beginPath();
+            ctx.arc(x + (height / 2 / 0.95), y + (height / 2 * 0.08), (height / 2 / 24), 0, 2 * Math.PI);
+            ctx.stroke();
+            ctx.fill();
+
+            ctx.closePath();
+
+            // console.log("balwan(" + x + ", " + y + ", " + height + ")");
+        }
+
+        function gwiazda(x, y, height) {
+            var a = height;
+            var points = [
+                [x + a * 0, y + a * 0.425],
+                [x + a * 0.375, y + a * 0.375],
+                [x + a * 0.5, y + a * 0],
+                [x + a * 0.625, y + a * 0.375],
+                [x + a, y + a * 0.425],
+                [x + a * 0.75, y + a * 0.625],
+                [x + a * 0.8, y + a],
+                [x + a * 0.5, y + a * 0.75],
+                [x + a * 0.2, y + a],
+                [x + a * 0.25, y + a * 0.625],
+                [x + a * 0, y + a * 0.425]
+            ];
+            var len = points.length;
+
+            ctx.fillStyle = "yellow";
+
+            ctx.beginPath();
+            ctx.moveTo(points[0][0], points[0][1]);
+
+            for (var i = 0; i < len; i++) {
+                ctx.lineTo(points[i][0], points[i][1]);
+            }
+
+            ctx.fill();
+            ctx.closePath();
+
+            // console.log("gwiazda(" + x + ", " + y + ", " + height + ")");
+        }
+
+        function kolo(x, y, height) {
+            ctx.fillStyle = "#641";
+            ctx.lineWidth = 12;
+            ctx.strokeStyle = "#284";
+
+            ctx.beginPath();
+            ctx.arc(x + (height / 2), y + (height / 2), height / 2, 0, 2 * Math.PI);
+            ctx.stroke();
+            ctx.fill();
+            ctx.closePath();
+
+            // console.log("kolo(" + x + ", " + y + ", " + height + ")");
+        }
+
+        function kwadrat(x, y, height) {
+            ctx.fillStyle = "#459";
+            ctx.lineWidth = 8;
+            ctx.strokeStyle = "#354";
+
+            ctx.beginPath();
+            ctx.rect(x, y, height, height);
+            ctx.stroke();
+            ctx.fill();
+            ctx.closePath();
+
+            // console.log("kwadrat(" + x + ", " + y + ", " + height + ")");
+        }
+
+        function random(a, z) {
+            return Math.floor((Math.random() * z) + a)
+        }
+
+        function usuwanie() {
+            t = document.getElementById("usuwanie");
+            t.innerHTML = "";
+
+            for (i in obiekty) {
+                t.innerHTML += "<button onclick='obiekty.splice(" + i + ", 1); pokaz(obiekty); usuwanie();'> Usuń " + i + "</button>"
+            }
+        }
+
+        usuwanie();
+    </script>
+</body>
+
+</html>

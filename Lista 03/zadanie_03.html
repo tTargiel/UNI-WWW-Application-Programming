@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zadanie 3</title>
+</head>
+
+<body>
+    n=<input name="n" value=55 type="number">
+    <button onclick="witaj()">Witaj</button>
+    <button onclick="liczby100()">1 .. 100</button>
+    <button onclick="liczbyN()">1 .. n</button>
+    <button onclick="wieloN()">wieloN</button>
+    <button onclick="ukryj()">Ukryj</button>
+    <button onclick="pokaz()">Pokaż</button>
+    <div id="ramka"></div>
+    <script>
+        function witaj() {
+            document.getElementById("ramka").innerHTML = "Dzień dobry";
+        }
+
+        function liczby100() {
+            document.getElementById("ramka").innerHTML = "";
+
+            for (let i = 1; i <= 100; i++) {
+                document.getElementById("ramka").innerHTML += i + "<br>";
+            }
+        }
+
+        function liczbyN() {
+            document.getElementById("ramka").innerHTML = "";
+            let n = document.getElementsByName("n")[0].value;
+
+            for (let i = 1; i <= n; i++) {
+                document.getElementById("ramka").innerHTML += i + "<br>";
+            }
+        }
+
+        function wieloN() {
+            document.getElementById("ramka").innerHTML = "";
+            let n = document.getElementsByName("n")[0].value;
+            
+            for (let i = 1; i <= 100; i++) {
+                document.getElementById("ramka").innerHTML += i * n + "<br>";
+            }
+        }
+
+        function ukryj() {
+            document.getElementById("ramka").style = "display: none;";
+        }
+
+        function pokaz() {
+            document.getElementById("ramka").style = "display: block;";
+        }
+    </script>
+</body>
+
+</html>

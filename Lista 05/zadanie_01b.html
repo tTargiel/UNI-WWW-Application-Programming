@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zadanie 1b</title>
+    <style>
+        .menu1 {
+            position: fixed;
+        }
+
+        .menu1 a {
+            font-size: 20px;
+        }
+
+        .menu1 a {
+            text-decoration: none;
+        }
+
+        .menu1 a {
+            background: #eee;
+            display: block;
+            font-family: arial;
+            margin: 2px;
+            padding: 4px 20px;
+        }
+
+        .menu1 li li a {
+            color: black;
+        }
+
+        .menu1 li:hover>a {
+            background: #aaa;
+        }
+
+        .menu1>li {
+            border: 1px solid grey;
+            display: table-cell;
+            padding: 0;
+        }
+
+        .menu1>li>a {
+            background: #678;
+            color: white;
+            margin: 2px;
+        }
+
+        .menu1>li:hover>a {
+            background: #456;
+        }
+
+        .menu1 ul {
+            list-style-type: none;
+        }
+
+        .menu1 ul {
+            padding: 0;
+        }
+
+        .menu1 li ul {
+            background: #eee;
+            border: 1px solid grey;
+            position: absolute;
+        }
+
+        .menu1 li ul {
+            display: none;
+        }
+
+        .menu1 li:hover ul {
+            display: block;
+        }
+
+        .menu1>li {
+            border: none;
+            display: table-cell;
+            padding: 0;
+        }
+
+        p:first-of-type {
+            margin-top: 64px;
+        }
+    </style>
+</head>
+
+<body>
+    <div>
+        <ul class="menu1">
+            <li><a href=#weglowodany>Węglowodany</a>
+                <ul>
+                    <li><a href=#monosacharydy>Monosacharydy</a></li>
+                    <li><a href=#dwucukry>Dwucukry</a></li>
+                    <li><a href=#polisacharydy>Polisacharydy</a></li>
+                </ul>
+            </li>
+            <li><a href=#bialka>Białka</a>
+                <ul>
+                    <li><a href=#proste>Białka proste</a></li>
+                    <li><a href=#zlozone>Białka złożone</a></li>
+                </ul>
+            </li>
+            <li><a href=#tluszcze>Tłuszcze</a>
+                <ul>
+                    <li><a href=#roslinne>Roślinne</a></li>
+                    <li><a href=#zwierzece>Zwierzęce</a></li>
+                    <li><a href=#sztuczne>Sztuczne</a></li>
+                </ul>
+            </li>
+            <li><a href=#witaminy>Witaminy</a>
+                <ul>
+                    <li><a href=#wodzie>Rozpuszczalne w wodzie</a></li>
+                    <li><a href=#tluszczach>Rozpuszczalne w tłuszczach</a></li>
+                </ul>
+            </li>
+        </ul><br>
+        <p id="weglowodany"> <b>WĘGLOWODANY</b>
+            w ścisłym znaczeniu są to organiczne związki chemiczne składające się z atomów węgla oraz wodoru i tlenu, w
+            takiej proporcji, że na każdy atom węgla przypadają dwa atomy wodoru i jeden tlenu, o ogólnym wzorze
+            sumarycznym: Cn(H2O)n.
+            Określenie „cukry” jest powszechnie używane w celu opisania monosacharydów i disacharydów w żywności, z
+            wyjątkiem alkoholi wielowodorotlenowych. Występuje więc na amerykańskich i europejskich etykietach i w
+            bazach danych (np. USDA National Nutrient Database) produktów spożywczych. Słowo „węglowodany” (w
+            terminologii ang. „available carbohydrate”) oznacza zaś wszelkie węglowodany podlegające procesom
+            metabolizmu w organizmie człowieka, łącznie z alkoholami wielowodorotlenowymi. Nie zalicza się więc do nich
+            nieprzyswajalny błonnik. Pojęcie „suma węglowodanów” (ang. total carbohydrates) uwzględnia wszystkie rodzaje
+            węglowodanów niezależnie od ich właściwości fizjologicznych i odżywczych oraz od zmiennej zawartości w
+            żywności substancji niewęglowodanowych. Zawartość takiej sumy węglowodanów wyznaczana jest jako różnica sumy
+            wszystkich pozostałych składników (wody, białka, tłuszczu, popiołu oraz alkoholu).
+        </p>
+        <p id="monosacharydy"> <b>MONOSACHARYDY</b>
+            Nie ulegają dalszemu rozpadowi na mniejsze podjednostki. Są zbudowane z od 3 do 7 atomów węgla i dzielą się
+            ze względu na liczbę atomów węgla (triozy, tetrozy, pentozy, heksozy, heptozy). Wszystkie monosacharydy są
+            rozpuszczalne w wodzie. Większość z nich charakteryzuje się słodkim smakiem, są poza tym bezwonne i
+            bezbarwne. Cukry proste to monomery, z których powstają disacharydy, oligosacharydy oraz cukry złożone
+            (wielocukry). Należą do nich glukoza, galaktoza, mannoza, fruktoza, ryboza oraz deoksyryboza. Są wchłaniane
+            bez wcześniejszej obróbki chemicznej i powodują natychmiastowy wyrzut glukozy do krwi.
+        </p>
+        <p id="dwucukry"> <b>DWUCUKRY</b>
+            Zbudowane są z dwóch monosacharydów – powstają w wyniku ich reakcji kondensacji (zarówno jednakowych, jak
+            różnych cząsteczek). Przykładowo laktoza, czyli cukier występujący w produktach mlecznych, powstaje z
+            połączenia glukozy i galaktozy, natomiast sacharoza (cukier stołowy) to łączenie glukozy i fruktozy. Z dwóch
+            cząsteczek glukozy powstaje z kolei maltoza, czyli cukier słodowy otrzymywany w wyniku hydrolizy skrobi,
+            użytkowany jako substancja słodząca lub pożywka dla bakterii. Disacharydy, podobnie jak cukry proste są
+            bezwonne, bezbarwne i słodkie.
+        </p>
+        <p id="polisacharydy"> <b>POLISACHARYDY</b>
+            Powstają w wyniku złączenia wiązaniami glikozydowymi reszt monosacharydów lub ich pochodnych. Mogą być
+            zbudowane z jednego tylko rodzaju cząsteczek monosacharydów (skrobia, glikogen) i zaliczane są wtedy
+            homopolisacharydów, lub z cząsteczek różnych monosacharydów, tworząc tym samym heteropolisacharydy (kwas
+            hialuronowy, heparyna). Nie wykazują właściwości redukcyjnych, nie wykazują też słodkiego smaku. Z wodą
+            tworzą układy koloidalne lub są w niej nierozpuszczalne. Pod wpływem hydrolaz glikozydowych i kwasów
+            nieorganicznych ulegają częściowemu rozkładowi do oligosacharydów lub całkowitemu do cukrów prostych.
+            Zaliczamy do nich m.in. glikogen, celulozę, pektynę, chitynę czy skrobię. Łańcuchy sacharydów mogą być
+            nierozgałęzione i dobrze rozpuszczalne w wodzie (amylozy) lub silnie rozgałęzione i nierozpuszczalne w
+            wodzie (amylopektyny).
+        </p>
+        <p id="bialka"> <b>BIAŁKA</b>
+            Białka są to związki wielkocząsteczkowe, które mają ogromne znaczenie dla procesów biochemicznych
+            determinujących procesy życiowe. Biorąc pod uwagę właściwości fizykochemiczne możemy je podzielić na białka
+            proste i złożone. Białka proste, czyli proteiny w wyniku hydrolizy ulegają rozpadowi jedynie na aminokwasy.
+            Natomiast część białkowa białek złożonych (proteidów) jest powiązana ze składnikiem niebiałkowym, tzw. grupą
+            prostetyczną. Do białek prostych zaliczamy m.in. albuminy, globuliny, histony i prolaminy, natomiast białka
+            złożone to np. glikoproteidy, lipoproteidy i nukleoproteidy.
+        </p>
+        <p id="proste"><b>BIAŁKA PROSTE</b>
+            białka zbudowane wyłącznie z aminokwasów. Przykładami takich białek są: miozyna, albuminy, kolagen,
+            keratyny.
+            Dzielimy je na następujące grupy:
+
+            protaminy – są silnie zasadowe, charakteryzują się dużą zawartością argininy oraz brakiem aminokwasów
+            zawierających siarkę. Są dobrze rozpuszczalne w wodzie. Najbardziej znanymi protaminami są: klupeina,
+            salmina, cyprynina, ezocyna, gallina.
+            histony – podobnie jak protaminy są silnie zasadowe i dobrze rozpuszczają się w wodzie; składniki jąder
+            komórkowych (w połączeniu z kwasem deoksyrybonukleinowym), czyli są obecne także w erytroblastach. W ich
+            skład wchodzi duża ilość takich aminokwasów jak lizyna i arginina.
+            albuminy – białka obojętne, spełniające szereg ważnych funkcji biologicznych: są enzymami, hormonami i
+            innymi biologicznie czynnymi związkami. Dobrze rozpuszczają się w wodzie i rozcieńczonych roztworach soli,
+            łatwo ulegają koagulacji. Znajdują się w tkance mięśniowej, osoczu krwi i mleku.
+            globuliny -w ich skład wchodzą wszystkie aminokwasy białkowe, z tym że kwas asparaginowy i kwas glutaminowy
+            w większych ilościach; w odróżnieniu od albumin są źle rozpuszczalne w wodzie, natomiast dobrze w
+            rozcieńczonych roztworach soli; posiadają podobne właściwości do nich. Występują w dużych ilościach w
+            płynach ustrojowych i tkance mięśniowej.
+            prolaminy – są to typowe białka roślinne, występują w nasionach. Charakterystyczną właściwością jest
+            zdolność rozpuszczania się w 70% etanolu.
+            gluteliny – podobnie jak prolaminy – to typowe białka roślinne; posiadają zdolność rozpuszczania się w
+            rozcieńczonych kwasach i zasadach.
+            skleroproteiny – białka charakteryzujące się dużą zawartością cysteiny i aminokwasów zasadowych oraz
+            kolagenu i elastyny, a także proliny i hydroksyproliny, nierozpuszczalne w wodzie i rozcieńczonych
+            roztworach soli. Są to typowe białka o budowie włóknistej, dzięki temu pełnią funkcje podporowe. Do tej
+            grupy białek należy keratyna.
+        </p>
+        <p id="zlozone"><b>BIAŁKA ZŁOŻONE</b>
+            (proteidy) - związki białkowe zawierające w swojej strukturze oprócz podstawowego łańcucha białkowego
+            (białko proste) także inne grupy, tzw. grupy prostetyczne.
+            Wyróżniamy:
+
+            fosfoproteiny - zawierające w swojej strukturze resztę kwasu fosforowego, np. kazeina (białko występujące w
+            mleku)
+            glikoproteiny - zawierają cukrowce (tkanka okrywająca i płyny ustrojowe)
+            chromoproteiny - zawierają część barwnikową (np. chlorofil albo hemoglobina)
+            lipoproteiny - zawierające tłuszczowiec (błona komórkowa, osocze krwi)
+            nukleoproteiny - związane z kwasem nukleinowym (podstawowa jednostka budująca DNA)
+            metaloproteiny - związane z atomem/kationem metalu
+        </p>
+        <p id="tluszcze"><b>TŁUSZCZE</b>
+            zwyczajowa nazwa grupy lipidów, estrów glicerolu i kwasów tłuszczowych, głównie triacylogliceroli. Reszty
+            kwasowe występujące w cząsteczkach tłuszczów zawierają zwykle od 12 do 18 atomów węgla.
+
+            Większość tłuszczów nie ma zapachu, jest nierozpuszczalna w wodzie i rozpuszczalnikach polarnych oraz dobrze
+            rozpuszczalna w rozpuszczalnikach niepolarnych. Wszystkie tłuszcze są lżejsze od wody, odczyn tłuszczów jest
+            obojętny. Ich stan skupienia zależy od tego, jakie reszty kwasowe tworzą cząsteczkę. Tłuszcze stałe
+            zawierają nasycone reszty kwasowe o długich łańcuchach węglowych, natomiast tłuszcze ciekłe zawierają
+            nienasycone reszty kwasowe (reszty, w których występują wiązania podwójne) lub reszty kwasowe o krótkich
+            łańcuchach węglowych. Kwasy nienasycone występujące w naturalnych tłuszczach są izomerami cis. Większość
+            tłuszczów to estry mieszane, czyli takie, które w cząsteczce zawierają różne reszty kwasowe.
+
+            Tłuszcze naturalne zawsze są mieszaninami różnych estrów glicerolu. W temperaturze pokojowej tłuszcze
+            zwierzęce to zazwyczaj ciała stałe (wyjątkiem jest np. tran), tłuszcze roślinne są cieczami (wyjątki to np.
+            masło kakaowe i olej kokosowy).
+        </p>
+        <p id="roslinne"><b>TŁUSZCZE ROŚLINNE</b>
+            w szerszym znaczeniu są to wszystkie substancje o konsystencji oleistej, pozyskiwane z dowolnej rośliny. W
+            węższym znaczeniu za olej roślinny uważa się każdy ciekły tłuszcz pochodzenia roślinnego, który w
+            temperaturze regionu pochodzenia rośliny ma konsystencję płynną. W skład wchodzą głównie triacyloglicerole
+            oraz inne związki rozpuszczalne w tłuszczach.Oleje roślinne są pozyskiwane z różnych części roślin, np.
+            nasion, owoców, pestek, jąder nasiennych[1], a także z kiełków roślinnych. Pozyskiwane są nie tylko z roślin
+            tradycyjnie uważanych za rośliny oleiste, ale także bardzo wielu innych.
+
+            W przeważającej większości oleje roślinne wykorzystywane są jako tłuszcze jadalne, ale także jako składniki
+            kosmetyków, a niektóre z nich jako środki lecznicze (np. olej z wiesiołka). Bywają także wykorzystywane jako
+            surowce do produkcji materiałów lakierniczych, malarskich i impregnacyjnych (np. olej lniany). Coraz większe
+            znaczenie ma także wykorzystanie olejów roślinnych jako paliw i do ich produkcji. Na środki smarne nie
+            nadają się, gdyż są olejami nietrwałymi, a często także schnącymi.
+        </p>
+        <p id="zwierzece"><b>TŁUSZCZE ZWIERZĘCE</b>
+            produkty naturalnego pochodzenia, uzyskiwane ze zwierząt lądowych i morskich. Są to mieszaniny estrów
+            gliceryny i wyższych kwasów tłuszczowych.
+
+            Są zaliczane do grupy tłuszczów nasyconych, są uzyskiwane z tkanki tłuszczowej zwierząt i z mleka. U
+            zwierząt tłuszcz występuje w postaci tkanki tłuszczowej podskórnej i jest gromadzony jako materiał
+            energetyczny, zapasowy. Występuje również w mleku ssaków.
+
+            Przykłady tłuszczów zwierzęcych:
+
+            masło, masło klarowane
+            smalec
+            słonina, skwarki
+            tran
+            łój
+            olej kostny
+            gęsi smalec
+        </p>
+        <p id="sztuczne"><b>TŁUSZCZE SZTUCZNE I MODYFIKOWANE</b>
+            Inaczej niż tłuszcze cis, tłuszcze trans są w dużym stopniu sztuczne, a w naturze występują w niewielkich
+            ilościach w mięsie oraz nabiale. Do niedawna tłuszcze trans były powszechnie stosowane w przemyśle
+            spożywczym, ale ostatnio znalazły się na czarnej liście substancji szkodzących zdrowiu. Kolejne sieci
+            restauracji typu fast food decydują się na znaczne ograniczenie tłuszczów trans w oferowanych daniach, a
+            specjaliści od żywienia ostrzegają przed zagrożeniami związanymi z dietą bogatą w te tłuszcze.
+        </p>
+        <p id="witaminy"><b>WITAMINY</b>
+            grupa organicznych związków chemicznych o różnorodnej budowie, niezbędnych do prawidłowego funkcjonowania
+            żywego organizmu. Mogą być pochodzenia naturalnego lub otrzymywane syntetycznie. Witaminy są egzogenne
+            (organizm ich nie syntezuje lub nie syntetyzuje ich wystarczająco), w związku z czym muszą być dostarczane z
+            pokarmem (najczęściej w postaci prowitamin). Przeciwne działanie do witamin wykazują antywitaminy[1].
+
+            Brak określonej witaminy w organizmie to awitaminoza, niedobór – hipowitaminoza, zaś nadmiar –
+            hiperwitaminoza[1].
+
+            Pierwsza odkryta witamina (B1) została wydzielona przez polskiego biochemika Kazimierza Funka w 1913 roku.
+            Wprowadził on również nazwę tej grupy związków (łac. vitae – 'życie' i amina – witamina B1 zawierała grupę
+            aminową).
+
+            Ze względu na rozpuszczalność dzielą się na witaminy rozpuszczalne w tłuszczach (witaminy A, D, E i K) i
+            rozpuszczalne w wodzie (witaminy B i C).
+        </p>
+        <p id="wodzie"><b>WITAMINY ROZPUSZCZALNE W WODZIE</b>
+            Witaminy rozpuszczalne w wodzie muszą być dostarczane z dietą, w celu zapewnienia prawidłowego działania
+            organizmu. Witaminy nie dostarczają energii (kalorii]), jednakże regulują procesy biochemiczne w komórkach.
+            Do witamin rozpuszczalnych w wodzie należą witaminy z grupy B oraz witamina C.
+        </p>
+        <p id="tluszczach"><b>WITAMINY ROZPUSZCZALNE W TŁUSZCZACH</b>
+            Większości witamin nasz organizm nie potrafi magazynować. Ich nadmiar wydalamy z moczem lub z potem. Jednak
+            witaminy A, D, E i K (witaminy rozpuszczalne w tłuszczach) występują w produktach zawierających tłuszcz a do
+            ich wchłaniania konieczna jest żółć.
+
+            Nie są one swobodnie wydalane przez nerki. Ich nadmiar odkłada się w tkance tłuszczowej i w wątrobie. Ma to
+            swoje dobre strony – poza witaminą D rzadko spotykamy ich niedobory. Należy jednak pamiętać, że z tego
+            samego powodu przesada z ich przyjmowaniem może skończyć się zatruciem.
+        </p>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zadanie 4</title>
+    <style>
+        #obrazek {
+            height: 100px;
+            left: 50%;
+            position: absolute;
+            top: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        #up {
+            height: 64px;
+            left: 50%;
+            padding: 10px;
+            position: absolute;
+            top: 10px;
+            transform: translate(-50%, 0);
+            width: 64px;
+        }
+
+        #down {
+            bottom: 10px;
+            height: 64px;
+            left: 50%;
+            padding: 10px;
+            position: absolute;
+            transform: translate(-50%, 0);
+            width: 64px;
+        }
+
+        #left {
+            height: 64px;
+            left: 10px;
+            padding: 10px;
+            position: absolute;
+            top: 50%;
+            transform: translate(0, -50%);
+            width: 64px;
+        }
+
+        #right {
+            height: 64px;
+            padding: 10px;
+            position: absolute;
+            right: 10px;
+            top: 50%;
+            transform: translate(0, -50%);
+            width: 64px;
+        }
+    </style>
+</head>
+
+<body>
+    <img id="obrazek" src="https://resources.tidal.com/images/2346d474/75a7/4673/aaa1/db77523e8cd6/640x640.jpg" onclick="this.style='display: none;'">
+    <button id="up" onclick="up()">up</button>
+    <button id="down" onclick="down()">down</button>
+    <button id="left" onclick="left()">left</button>
+    <button id="right" onclick="right()">right</button>
+    <script>
+        var w = window.innerWidth / 2;
+        var h = window.innerHeight / 2;
+        function up() {
+            h -= 10;
+            document.getElementById("obrazek").style.top = h + "px";
+        }
+        function down() {
+            h += 10;
+            document.getElementById("obrazek").style.top = h + "px";
+        }
+        function left() {
+            w -= 10;
+            document.getElementById("obrazek").style.left = w + "px";
+        }
+        function right() {
+            w += 10;
+            document.getElementById("obrazek").style.left = w + "px";
+        }
+    </script>
+</body>
+
+</html>

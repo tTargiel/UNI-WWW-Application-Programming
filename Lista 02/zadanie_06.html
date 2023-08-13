@@ -1,0 +1,98 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zadanie 6</title>
+    <style>
+        table,
+        th,
+        td {
+            border: 1px solid black;
+            border-collapse: collapse;
+            padding: 10px;
+        }
+
+        table.A {
+            background-color: lightgoldenrodyellow;
+            color: #555;
+            font-weight: bold;
+            margin: 30px 0 0 20px;
+            text-align: right;
+        }
+
+        table.B {
+            background-color: lightseagreen;
+            color: #6f0707;
+            font-weight: lighter;
+            margin: 30px 0 0 20px;
+            text-align: center;
+        }
+
+        table.B th {
+            padding: 20px 60px;
+            vertical-align: bottom;
+        }
+
+        tr:hover {
+            font-weight: bold;
+            background: yellow;
+        }
+    </style>
+</head>
+
+<body>
+    <table class="A">
+        <tr>
+            <th colspan="2">Dane osobowe</th>
+            <th>Wiek</th>
+        </tr>
+        <tr>
+            <td>Jan</td>
+            <td>Kowalski</td>
+            <td>43</td>
+        </tr>
+        <tr>
+            <td>Andrzej</td>
+            <td>Michalak</td>
+            <td>57</td>
+        </tr>
+        <tr>
+            <td>Michał</td>
+            <td>Piechota</td>
+            <td>28</td>
+        </tr>
+        <tr>
+            <td>Weronika</td>
+            <td>Szpila</td>
+            <td>36</td>
+        </tr>
+    </table>
+    <br>
+    <table class="B">
+        <tr>
+            <th>Imię</th>
+            <td>Jan</td>
+            <td>Andrzej</td>
+            <td>Michał</td>
+            <td>Weronika</td>
+        </tr>
+        <tr>
+            <th rowspan="2">Telefon</th>
+            <td>413367715</td>
+            <td>953124657</td>
+            <td>753162498</td>
+            <td>165234915</td>
+        </tr>
+        <tr>
+            <td>518990041</td>
+            <td>245913565</td>
+            <td>875432651</td>
+            <td>126594852</td>
+        </tr>
+    </table>
+</body>
+
+</html>

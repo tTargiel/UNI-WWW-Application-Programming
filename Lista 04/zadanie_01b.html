@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zadanie 1b</title>
+    <style>
+        body {
+            text-align: center
+        }
+
+        img {
+            height: 400px;
+            max-width: 400px;
+            vertical-align: middle;
+        }
+    </style>
+</head>
+
+<body>
+    <button onclick="f(-1);">
+        <p> << </p>
+    </button>
+    <!-- <img src="./media/a_01.jpg"> -->
+    <img src="https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.jPoohiIFCSZcn9mYJ2ZFkQHaEo%26pid%3DApi&f=1">
+    <button onclick="f(1);">
+        <p> >> </p>
+    </button>
+
+    <script>
+        var i = 0;
+        // var adr=["./media/a_01.jpg", "./media/a_02.jpg", "./media/a_03.jpg", "./media/a_04.jpg", "./media/a_05.jpg", "./media/a_06.jpg", "./media/a_07.jpg", "./media/a_08.jpg", "./media/a_09.jpg", "./media/a_10.jpg"];
+        var adr = ["https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.jPoohiIFCSZcn9mYJ2ZFkQHaEo%26pid%3DApi&f=1", "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.hOo9QrrlzKLnN0SIjgonFwHaD4%26pid%3DApi&f=1", "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.pj1uSf6ay3uazdyo98sOqgHaEK%26pid%3DApi&f=1", "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.XFddWzozxEMXW5coxZ8rlgHaEK%26pid%3DApi&f=1", "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.ZAiGgJA72Zw5KTalbIYijwHaD4%26pid%3DApi&f=1", "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.eeavaenu2IskZ7QMYG1AgAHaD4%26pid%3DApi&f=1", "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.TorsZHZZbcGFsafZGtqGWQHaFj%26pid%3DApi&f=1", "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.45YgtIVH_Jjbd-wTKhzBFwHaEK%26pid%3DApi&f=1", "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.hUCKqggLmez3qRoOdJNgbQHaEK%26pid%3DApi&f=1", "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.QZT2AyN7o0tR5ttOCNndWgHaE7%26pid%3DApi&f=1", "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse1.mm.bing.net%2Fth%3Fid%3DOIP.GHc6t4UfdB51XBNYApLGxQHaE8%26pid%3DApi&f=1", "https://external-content.duckduckgo.com/iu/?u=https%3A%2F%2Ftse3.mm.bing.net%2Fth%3Fid%3DOIP.cQyD7sxUr3b-_nWwqCRbGAHaEK%26pid%3DApi&f=1"];
+        var img = document.getElementsByTagName("img")[0];
+
+        function f(x) {
+            i = i + x;
+
+            if (i == adr.length) {
+                i = 0;
+            }
+            else if (i < 0) {
+                i = adr.length - 1;
+            }
+
+            img.src = adr[i];
+        }
+    </script>
+</body>
+
+</html>

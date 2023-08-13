@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zadanie 5</title>
+    <style>
+        p:nth-of-type(5n) {
+            background-color: black;
+            color: yellow;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        function resetuj() {
+            var p = document.querySelectorAll("p");
+
+            for (i = 0; i < p.length; i++) {
+                p[i].style.backgroundColor = "white";
+                p[i].style.color = "black";
+            }
+        }
+        function co3() {
+            var p = document.querySelectorAll("p");
+
+            for (i = 0; i < p.length; i += 3) {
+                p[i].style.backgroundColor = "pink";
+                p[i].style.color = "blue";
+            }
+        }
+        function kopiuj15() {
+            var p = document.querySelectorAll("p");
+            document.body.innerHTML += "<p>" + p[p.length - 15].innerHTML + "</p>";
+        }
+        function dodajNumerN() {
+            var p = document.querySelectorAll("p");
+            document.body.innerHTML += "<p>Numer tego paragrafu to " + (p.length + 1) + "</p>";
+        }
+    </script>
+    <button onclick="resetuj();">Resetuj</button>
+    <button onclick="co3();">Co trzeci paragraf</button>
+    <button onclick="kopiuj15();">Kopiuj 15 paragraf od końca</button>
+    <button onclick="dodajNumerN();">Dodaj paragraf o numerze n</button>
+    <p>eins</p>
+    <p>zwei</p>
+    <p>drei</p>
+    <p>vier</p>
+    <p>fünf</p>
+    <p>sechs</p>
+    <p>sieben</p>
+    <p>acht</p>
+    <p>neun</p>
+    <p>zehn</p>
+    <p>elf</p>
+    <p>zwölf</p>
+    <p>dreizehn</p>
+    <p>vierzehn</p>
+    <p>fünfzehn</p>
+</body>
+
+</html>

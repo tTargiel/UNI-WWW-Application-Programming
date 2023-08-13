@@ -1,0 +1,150 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zadanie 4</title>
+    <script src="https://code.jquery.com/jquery-3.6.0.js"
+        integrity="sha256-H+K7U5CnXl1h5ywQfKtSj8PCmoN9aaq30gDh27Xc0jk=" crossorigin="anonymous"></script>
+    <style>
+        .komorka {
+            background-color: darkblue;
+        }
+
+        .komorkaNaglowka {
+            background-color: cadetblue;
+            font-weight: bold;
+        }
+
+        button {
+            float: left;
+            margin: 5px;
+            position: absolute;
+        }
+
+        table {
+            border-collapse: collapse;
+            margin-left: 35%;
+            position: absolute;
+        }
+
+        td {
+            border: 2px solid black;
+            height: 60px;
+            text-align: center;
+            width: 60px;
+        }
+
+        th {
+            border: 2px solid black;
+            height: 60px;
+            width: 60px;
+        }
+    </style>
+</head>
+
+<body>
+    <table>
+        <tr>
+            <th>jeden</th>
+            <th>dwa</th>
+            <th>trzy</th>
+            <th>cztery</th>
+            <th>pięć</th>
+        </tr>
+        <tr>
+            <td>one</td>
+            <td>two</td>
+            <td>three</td>
+            <td>four</td>
+            <td>five</td>
+        </tr>
+        <tr>
+            <td>eins</td>
+            <td>zwei</td>
+            <td>drei</td>
+            <td>vier</td>
+            <td>fünf</td>
+        </tr>
+        <tr>
+            <td>un</td>
+            <td>deux</td>
+            <td>trois</td>
+            <td>quatre</td>
+            <td>cinq</td>
+        </tr>
+        <tr>
+            <td>en</td>
+            <td>to</td>
+            <td>tre</td>
+            <td>fire</td>
+            <td>bage</td>
+        </tr>
+    </table>
+    <button id="dodajW">Dodaj pusty wiersz</button><br>
+    <button id="dodajKdoW">Dodaj pustą komórkę do każdego wiersza</button><br>
+    <button id="dodajKdoOstW">Dodaj komórkę do ostatniego wiersza</button><br>
+    <button id="powielOstW">Powiel ostatni wiersz</button><br>
+    <button id="usunOstW">Usuń ostatni wiersz</button><br>
+    <button id="usunPierwW">Usuń pierwszy wiersz</button><br>
+    <button id="usunOstK">Usuń ostatnią kolumnę</button><br>
+    <button id="usunPierwK">Usuń pierwszą kolumnę</button><br>
+    <button id="dodajClick">Dodaj do komórek obsługę zdarzenia <b>click</b></button><br>
+    <button id="dodajMouse">Dodaj do komórek obsługę zdarzeń <b>mouseover, mouseout</b></button>
+    <script>
+        $(document).ready(function () {
+            $("#dodajW").click(function () {
+                $("table").append("<tr><td></td><td></td><td></td><td></td><td></td></tr>");
+            });
+            $("#dodajKdoW").click(function () {
+                $("tr").append("<td></td>");
+            });
+            $("#dodajKdoOstW").click(function () {
+                $("tr").last().append("<td></td>");
+            });
+            $("#powielOstW").click(function () {
+                $("tr").last().clone().appendTo("table");
+            });
+            $("#usunOstW").click(function () {
+                $("tr").last().remove();
+            });
+            $("#usunPierwW").click(function () {
+                $("tr").first().remove();
+            });
+            $("#usunOstK").click(function () {
+                $("tr td:last-of-type").remove();
+                $("tr th:last-of-type").remove();
+            });
+            $("#usunPierwK").click(function () {
+                $("tr td:first-of-type").remove();
+                $("tr th:first-of-type").remove();
+            });
+            $("#dodajClick").bind("click", function () {
+                $("td").click(function () {
+                    $(this).fadeOut();
+                });
+                $("th").click(function () {
+                    $(this).fadeOut();
+                });
+            });
+            $("#dodajMouse").bind("click", function () {
+                $("td").mouseover(function () {
+                    $(this).addClass("komorka");
+                });
+                $("th").mouseover(function () {
+                    $(this).addClass("komorkaNaglowka");
+                });
+                $("td").mouseout(function () {
+                    $(this).removeClass("komorka");
+                });
+                $("th").mouseout(function () {
+                    $(this).removeClass("komorkaNaglowka");
+                });
+            });
+        });
+    </script>
+</body>
+
+</html>

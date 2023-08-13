@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zadanie 5</title>
+    <style>
+        #ramka {
+            height: 768px;
+            width: 1024px;
+            border: 1px solid grey;
+            margin: auto;
+            position: relative;
+        }
+
+        b {
+            display: block;
+            height: 48px;
+            width: 48px;
+            position: absolute;
+            text-align: center;
+        }
+
+        div,
+        h1 {
+            text-align: center;
+            margin: 10px;
+        }
+
+        img {
+            height: 48px;
+            width: 48px;
+            border-radius: 50%;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Koronawiruski</h1>
+    <div id="ramka">
+        <script>
+            for (let i = 0; i < 64; i++) {
+                if (i % 2 == 0) {
+                    document.write("<b><img src='./media/wirus.png'></b>");
+                }
+                else {
+                    document.write("<b><img src='./media/koronawirus.png'></b>");
+                }
+            }
+        </script>
+    </div>
+
+    <div>
+        <button onclick="run=false;"> Stop </button>
+        <button onclick="run=true; step();"> Start </button>
+    </div>
+
+    <script>
+        var wirusy = document.getElementsByTagName("b");
+        var run = false;
+
+        for (wirus of wirusy) {
+            wirus.x = 24 + Math.random() * 952;
+            wirus.y = 24 + Math.random() * 696;
+
+            wirus.vx = Math.random() * 6;
+            wirus.vy = Math.random() * 6;
+
+            wirus.style.left = wirus.x + "px";
+            wirus.style.top = wirus.y + "px";
+            wirus.style.transform = "rotate(" + Math.atan2(wirus.vy, wirus.vx) + "rad)";
+        }
+
+        function step() {
+            for (let wirus of wirusy) {
+                wirus.x += wirus.vx;
+                wirus.y += wirus.vy;
+
+                if (wirus.x > 976 || wirus.x < 0) wirus.vx *= -1;
+                if (wirus.y > 720 || wirus.y < 0) wirus.vy *= -1;
+
+                wirus.style.left = wirus.x + "px";
+                wirus.style.top = wirus.y + "px";
+            }
+
+            if (run) {
+                setTimeout(step, 20);
+            }
+        }
+    </script>
+</body>
+
+</html>

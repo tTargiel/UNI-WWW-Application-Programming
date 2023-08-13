@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zadanie 1</title>
+    <style>
+        #paragraf {
+            background-color: pink;
+            border: 2px solid green;
+            padding: 10px;
+        }
+    </style>
+</head>
+
+<body>
+    <script>
+        var klikniecia = 0;
+        
+        function klik() {
+            klikniecia++;
+            document.getElementById('paragraf').innerHTML = 'Kliknięty po raz: ' + klikniecia;
+        }
+    </script>
+    <p id="paragraf" onclick="klik();">Jeszcze nie kliknięty</p>
+</body>
+
+</html>

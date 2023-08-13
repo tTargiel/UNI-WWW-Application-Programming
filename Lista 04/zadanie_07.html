@@ -1,0 +1,173 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zadanie 7</title>
+    <style>
+        #tytul {
+            color: red;
+            font-size: 64px;
+            text-align: center;
+        }
+
+        body {
+            background-color: black;
+        }
+
+        div,
+        h1,
+        p {
+            margin: 10px;
+            text-align: center;
+        }
+
+        h1 {
+            color: white;
+        }
+
+        table {
+            border-collapse: collapse;
+            margin: auto;
+        }
+
+        td {
+            border: 1px solid #ddd;
+            height: 64px;
+            text-align: center;
+            width: 64px;
+        }
+    </style>
+</head>
+
+<body>
+    <div id="tytul">DARK ROOM</div>
+    <table id="table"></table>
+    <div>
+        <button onclick="nowaGra();"> Nowa gra </button>
+    </div>
+    <h1 id="wynik"></h1>
+
+    <script>
+        var g1x = 0;
+        var g1y = 0;
+        var g2x = 0;
+        var g2y = 0;
+        var gra;
+        var gracz = 0;
+        var gracze = ["<img src='./media/green.png'>", "<img src='./media/red.png'>"];
+        var msDelay = 500;
+        var plansza = "";
+        var punktyg1 = 0;
+        var punktyg2 = 0;
+        var wynik = document.getElementById("wynik");
+        var x = 0;
+        var xx = 0;
+        var y = 0;
+        var yy = 0;
+
+        pustaPlansza();
+
+        function pustaPlansza() {
+            clearInterval(gra);
+            document.getElementById("table").innerHTML = "";
+
+            for (let i = 0; i < 10; i++) {
+                plansza += "<tr>"
+                for (let j = 0; j < 10; j++) {
+                    plansza += "<td id=" + j + "," + i + "></td>"
+                }
+                plansza += "</tr>"
+            }
+
+            document.getElementById("table").innerHTML = plansza;
+            plansza = "";
+        }
+
+        function nowaGra() {
+            pustaPlansza();
+            g1x = Math.floor(Math.random() * 9);
+            g1y = Math.floor(Math.random() * 9);
+            document.getElementById(g1x + "," + g1y).innerHTML = gracze[0];
+            g2x = Math.floor(Math.random() * 9);
+            g2y = Math.floor(Math.random() * 9);
+            document.getElementById(g2x + "," + g2y).innerHTML = gracze[1];
+            gra = setInterval(losuj, msDelay);
+            running = 1;
+        }
+
+        function losuj() {
+            if (running == 1) {
+                for (let k = 1; k < 3; k++) {
+                    running = 0;
+                    if (k == 1) {
+                        x = g1x;
+                        y = g1y;
+                    }
+                    else {
+                        x = g2x;
+                        y = g2y;
+                    }
+
+                    var i = Math.floor(Math.random() * 8);
+                    switch (i) {
+                        case 0: if (x == 0 || y == 0) { losuj(); } else { ruch(-1, -1, k); } break;
+                        case 1: if (y == 0) { losuj(); } else { ruch(0, -1, k); } break;
+                        case 2: if (x == 9 || y == 0) { losuj(); } else { ruch(1, -1, k); } break;
+                        case 3: if (x == 0) { losuj(); } else { ruch(-1, 0, k); } break;
+                        case 4: if (x == 9) { losuj(); } else { ruch(1, 0, k); } break;
+                        case 5: if (x == 0 || y == 9) { losuj(); } else { ruch(-1, 1, k); } break;
+                        case 6: if (y == 9) { losuj(); } else { ruch(0, 1, k); } break;
+                        case 7: if (x == 9 || y == 9) { losuj(); } else { ruch(1, 1, k); } break;
+                    }
+                }
+            }
+            running = 1
+        }
+
+        function ruch(xx, yy, gracz) {
+            if (gracz == 1) {
+                document.getElementById(g1x + "," + g1y).innerHTML = "";
+                g1x += xx;
+                g1y += yy;
+                document.getElementById(g1x + "," + g1y).innerHTML = gracze[0];
+                if (g1x == g2x && g1y == g2y) {
+                    punktyg1 += 1;
+                    if (punktyg1 == 5) {
+                        document.getElementById("wynik").innerHTML = "Zielony wygrywa!";
+                    }
+                    else {
+                        document.getElementById("wynik").innerHTML = "Zielony " + punktyg1 + ":" + punktyg2 + " Czerwony";
+                    }
+                    clearInterval(gra);
+                    gra = 0;
+                }
+            }
+            else {
+                if (gra == 0) { }
+                else {
+                    document.getElementById(g2x + "," + g2y).innerHTML = "";
+                    g2x += xx;
+                    g2y += yy;
+                    document.getElementById(g2x + "," + g2y).innerHTML = gracze[1];
+                    if (g2x == g1x && g2y == g1y) {
+                        punktyg2 += 1;
+                        if (punktyg2 == 5) {
+                            document.getElementById("wynik").innerHTML = "Czerwony wygrywa!";
+                        }
+                        else {
+                            document.getElementById("wynik").innerHTML = "Zielony " + punktyg1 + ":" + punktyg2 + " Czerwony";
+                        }
+                        clearInterval(gra);
+                        gra = 0;
+                    }
+                }
+            }
+
+        }
+    </script>
+</body>
+
+</html>

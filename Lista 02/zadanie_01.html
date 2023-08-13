@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="pl">
+    
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zadanie 1</title>
+</head>
+
+<body>
+    <button style="position: absolute;" onmouseover="this.style.left = '' + (Math.random() * 100) + '%';">Kliknij</button>
+    <br>
+    <p>Przycisk powyżej jest pozycjonowany absolutnie - czyli niezależnie od reszty
+        treści na ekranie, możemy na niego wpływać atrybutami left, right itd., dodatkowo
+        posiada on atrybut onmouseover który odpowiada za wykonanie akcji po najechaniu
+        na niego myszą. W tym atrybucie mamy umieszczony prosty skrypt JavaScript,
+        który w każdym wykonaniu oddala przycisk o losową wartość left - dzięki temu
+        przycisk przesuwa się w osi X.</p>
+    <button style="position: absolute; background-color: green;" onmouseover="this.style.top = '' + (Math.random() * 100) + '%';">Kliknij</button>
+    <br>
+    <button style="position: absolute; background-color: red;" onmouseover="this.style.left = '' + (Math.random() * 100) + '%'; this.style.top = '' + (Math.random() * 100) + '%';">Kliknij</button>
+</body>
+
+</html>

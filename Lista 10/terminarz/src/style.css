@@ -1,0 +1,150 @@
+body {
+    background-color: antiquewhite;
+}
+
+#leftPanel {
+    background-color: #baacee;
+    height: 100%;
+    left: 0;
+    position: absolute;
+    top: 0;
+    width: 20%;
+}
+
+#main,
+#leftPanel {
+    float: left;
+}
+
+#menu {
+    height: 50%;
+    width: 100%;
+}
+
+#menu>a {
+    background-color: rgb(135, 144, 222);
+    border-radius: 24px;
+    display: table;
+    font-size: 20px;
+    height: 15%;
+    margin: 15% auto;
+    text-align: center;
+    transform: translateY(80%);
+    width: 85%;
+}
+
+#menu>a:hover {
+    background-color: #5b5099;
+    cursor: pointer;
+}
+
+#menu>a>b {
+    display: table-cell;
+    vertical-align: middle;
+}
+
+
+form {
+    display: block;
+    margin: 0 auto;
+    width: 300px;
+}
+
+input,
+textarea,
+select {
+    box-sizing: border-box;
+    display: block;
+    margin: 0 auto;
+    width: 100%;
+}
+
+input[type=submit] {
+    background-color: rgb(135, 144, 222);
+    border-radius: 24px;
+    border: 0px;
+    color: black;
+    cursor: pointer;
+    font-size: 16px;
+    margin: auto;
+    padding: 8px 16px;
+    text-decoration: none;
+    width: 50%;
+}
+
+
+#content {
+    height: 100%;
+    left: 20%;
+    margin: 0;
+    position: absolute;
+    top: 0;
+    width: 80%;
+}
+
+#tab {
+    background-color: #baacee;
+    border-radius: 16px;
+    height: 90%;
+    margin-left: auto;
+    margin-right: auto;
+    text-align: center;
+    transform: translateY(2.5%);
+    width: 90%;
+}
+
+a,
+a:visited,
+a:hover {
+    text-decoration: none;
+    color: black;
+}
+
+h1,
+h2 {
+    padding-top: 16px;
+}
+
+table {
+    margin-left: auto;
+    margin-right: auto;
+    border-collapse: collapse;
+}
+
+th,
+td {
+    border: 2px solid black;
+    padding: 8px;
+}
+
+.button {
+    background-color: aqua;
+    text-decoration: underline;
+}
+
+.day {
+    width: 150px;
+}
+
+.my-tbody {
+    height: 70%;
+    display: block;
+    overflow-y: scroll;
+    width: 90%;
+}
+
+/* Hide scrollbar for Chrome, Safari and Opera */
+.my-tbody::-webkit-scrollbar {
+    display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.my-tbody {
+    -ms-overflow-style: none; /* IE and Edge */
+    scrollbar-width: none; /* Firefox */
+}
+
+td,
+th {
+    background-color: white;
+}

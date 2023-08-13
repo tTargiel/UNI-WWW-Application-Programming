@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="pl">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Zadanie 7</title>
+</head>
+
+<body>
+    <canvas id="mojaCanva" width="1080" height="720" style="border: 1px solid #d3d3d3;">
+        Your browser does not support the HTML canvas tag.</canvas>
+
+    <script>
+        var c = document.getElementById("mojaCanva");
+        var ctx = c.getContext("2d");
+        ctx.fillStyle = "#FF88FF";
+        ctx.fillRect(0, 0, 1080, 720);
+
+        // gwiazda(random(0, 540), random(0, 540), random(0, 540));
+        // gwiazda(random(0, 540), random(0, 540), random(0, 540));
+        // kolo(random(0, 540), random(0, 540), random(0, 540));
+        // kolo(random(0, 540), random(0, 540), random(0, 540));
+        // kwadrat(random(0, 540), random(0, 540), random(0, 540));
+        // kwadrat(random(0, 540), random(0, 540), random(0, 540));
+        // balwan(random(0, 540), random(0, 540), random(0, 540));
+        // balwan(random(0, 540), random(0, 540), random(0, 540));
+
+        gwiazda(162, 430, 236)
+        gwiazda(535, 222, 495)
+        kolo(516, 56, 146)
+        kolo(497, 201, 138)
+        kwadrat(277, 457, 152)
+        kwadrat(130, 106, 39)
+        balwan(103, 224, 263)
+        balwan(161, 11, 385)
+
+        function balwan(x, y, height) {
+            ctx.fillStyle = "#dddddd";
+            ctx.lineWidth = 4;
+            ctx.strokeStyle = "#def";
+
+            // "Ciało" bałwana (idąc od dołu)
+            ctx.beginPath();
+            ctx.arc(x + (height / 2), y + (height / 2), (height / 2 / 2), 0, 2 * Math.PI);
+            ctx.stroke();
+            ctx.fill();
+
+            ctx.beginPath();
+            ctx.arc(x + (height / 2), y + (height / 2 * 0.5), (height / 2 / 3), 0, 2 * Math.PI);
+            ctx.stroke();
+            ctx.fill();
+
+            ctx.beginPath();
+            ctx.arc(x + (height / 2), y + (height / 2 * 0.15), (height / 2 / 4), 0, 2 * Math.PI);
+            ctx.stroke();
+            ctx.fill();
+
+            // Guziki bałwana (idąc od dołu)
+            ctx.fillStyle = "#0000FF";
+            ctx.lineWidth = 2;
+
+            ctx.beginPath();
+            ctx.arc(x + (height / 2), y + (height / 2 * 1.2), (height / 2 / 30), 0, 2 * Math.PI);
+            ctx.stroke();
+            ctx.fill();
+
+            ctx.beginPath();
+            ctx.arc(x + (height / 2), y + (height / 2 * 0.5 * 1.8), (height / 2 / 30), 0, 2 * Math.PI);
+            ctx.stroke();
+            ctx.fill();
+
+            ctx.beginPath();
+            ctx.arc(x + (height / 2), y + (height / 2 * 0.15 * 4), (height / 2 / 30), 0, 2 * Math.PI);
+            ctx.stroke();
+            ctx.fill();
+
+            // Marchwiowy nosek
+            ctx.fillStyle = "#FF6633";
+
+            ctx.beginPath();
+            ctx.moveTo(x + (height / 2), y + (height / 2 * 0.15));
+            ctx.lineTo(x + (height / 2 / 2), y + (height / 2 * 0.2));
+            ctx.lineTo(x + (height / 2), y + (height / 2 * 0.25));
+            ctx.fill();
+
+            // Oczka bałwana
+            ctx.fillStyle = "gray";
+
+            ctx.beginPath();
+            ctx.arc(x + (height / 2 / 1.15), y + (height / 2 * 0.08), (height / 2 / 24), 0, 2 * Math.PI);
+            ctx.stroke();
+            ctx.fill();
+
+            ctx.beginPath();
+            ctx.arc(x + (height / 2 / 0.95), y + (height / 2 * 0.08), (height / 2 / 24), 0, 2 * Math.PI);
+            ctx.stroke();
+            ctx.fill();
+
+            ctx.closePath();
+
+            console.log("balwan(" + x + ", " + y + ", " + height + ")");
+        }
+
+        function gwiazda(x, y, height) {
+            var a = height;
+            var points = [
+                [x + a * 0, y + a * 0.425],
+                [x + a * 0.375, y + a * 0.375],
+                [x + a * 0.5, y + a * 0],
+                [x + a * 0.625, y + a * 0.375],
+                [x + a, y + a * 0.425],
+                [x + a * 0.75, y + a * 0.625],
+                [x + a * 0.8, y + a],
+                [x + a * 0.5, y + a * 0.75],
+                [x + a * 0.2, y + a],
+                [x + a * 0.25, y + a * 0.625],
+                [x + a * 0, y + a * 0.425]
+            ];
+            var len = points.length;
+
+            ctx.fillStyle = "yellow";
+
+            ctx.beginPath();
+            ctx.moveTo(points[0][0], points[0][1]);
+
+            for (var i = 0; i < len; i++) {
+                ctx.lineTo(points[i][0], points[i][1]);
+            }
+
+            ctx.fill();
+            ctx.closePath();
+
+            console.log("gwiazda(" + x + ", " + y + ", " + height + ")");
+        }
+
+        function kolo(x, y, height) {
+            ctx.fillStyle = "#" + random(100, 999);
+            ctx.lineWidth = random(0, 16);
+            ctx.strokeStyle = "#" + random(100, 999);
+
+            ctx.beginPath();
+            ctx.arc(x + (height / 2), y + (height / 2), height / 2, 0, 2 * Math.PI);
+            ctx.stroke();
+            ctx.fill();
+            ctx.closePath();
+
+            console.log("kolo(" + x + ", " + y + ", " + height + ")");
+        }
+
+        function kwadrat(x, y, height) {
+            ctx.fillStyle = "#" + random(100, 999);
+            ctx.lineWidth = random(0, 16);
+            ctx.strokeStyle = "#" + random(100, 999);
+
+            ctx.beginPath();
+            ctx.rect(x, y, height, height);
+            ctx.stroke();
+            ctx.fill();
+            ctx.closePath();
+
+            console.log("kwadrat(" + x + ", " + y + ", " + height + ")");
+        }
+
+        function random(a, z) {
+            return Math.floor((Math.random() * z) + a)
+        }
+    </script>
+</body>
+
+</html>
